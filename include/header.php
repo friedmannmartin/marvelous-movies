@@ -19,17 +19,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-    <link rel="manifest" href="./favicon/site.webmanifest">
-    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#ed1d24">
     <link rel="shortcut icon" href="./favicon/favicon.ico">
-    <meta name="apple-mobile-web-app-title" content="Marvelous Movies">
-    <meta name="application-name" content="Marvelous Movies">
-    <meta name="msapplication-TileColor" content="#2d89ef">
-    <meta name="msapplication-config" content="./favicon/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
 
     <!-- SEO -->
     <meta name="description" content="Only Marvelous Movies offer you the best films from Marvel Cinematic Universe. You have unique chance to watch these masterpieces on projections screen in our cinema.">
