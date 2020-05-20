@@ -61,6 +61,8 @@
             <div class="col">
                 <h2 class="pb-3">User login</h2>
                 <form method="post">
+
+                    <!-- Email -->
                     <div class="form-group">
                         <label for="email">E-mail:</label>
                         <input type="email"
@@ -75,6 +77,8 @@
                             <div class="invalid-feedback">Username or password is wrong.</div>
                         <?php endif?>
                     </div>
+
+                    <!-- Password -->
                     <div class="form-group">
                         <label for="password">Password:</label>
                         <input type="password"
@@ -88,6 +92,8 @@
                             <div class="invalid-feedback">Username or password is wrong.</div>
                         <?php endif?>
                     </div>
+
+                    <!-- Remember me -->
                     <div class="form-group form-check">
                         <input type="checkbox"
                             name="remeber"
@@ -106,7 +112,7 @@
                 </form>
             </div>
             <div class="col d-none d-sm-block">
-                <img src="./img/sign-in.svg" alt="Superhero" class="img-fluid" width="600" height="360"/>
+                <img src="./img/sign-in.svg" alt="Sign in" class="img-fluid" width="600" height="360"/>
             </div>
         </div>
     </div>
