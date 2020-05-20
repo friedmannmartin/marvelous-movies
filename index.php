@@ -16,6 +16,7 @@
             <div class="col-sm-5 align-self-center">
                 <h2>Come and see marvels</h2>
                 <p>Only Marvelous Movies offer you the best films from Marvel Cinematic Universe. You have unique chance to watch these masterpieces on projections screen in our cinema.</p>
+                <!-- Call to action button -->
                 <a class="btn btn-primary" href="./program">Watch Now</a>
             </div>
         </div>
