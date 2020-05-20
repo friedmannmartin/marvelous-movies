@@ -1,0 +1,33 @@
+@font-face {
+    font-family: MARVEL;
+    src: url(marvel.ttf);
+  }
+  @font-face {
+    font-family: Roboto;
+    src: url(roboto-regular.ttf);
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: RobotoCondensed;
+    src: url(roboto-condensed-bold.ttf);
+    font-weight: 700;
+  }
+
+$marvel_red : #ED1D24;
+$hulk_green : #007a45;
+$facebook_blue : #2D88FF;
+$darkish_black : #242124;
+$off-white : #ECEEED;
+
+.font-normal{
+  font-family: Roboto;
+}
+.font-header {
+    font-family: RobotoCondensed;
+}
+.font-brand {
+  font-family: MARVEL;
+}
+main{
+  min-height: calc(100vh - 2*56px);
+}
