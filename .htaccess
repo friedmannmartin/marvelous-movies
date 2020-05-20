@@ -1,8 +1,8 @@
-ErrorDocument 401 /401.php
-ErrorDocument 403 /403.php
-ErrorDocument 404 /404.php
-
 Options +FollowSymLinks
+
+ErrorDocument 401 /~frim00/marvelous-movies/error-401.php
+ErrorDocument 403 /~frim00/marvelous-movies/error-403.php
+ErrorDocument 404 /~frim00/marvelous-movies/error-404.php
 
 RewriteEngine on
 
