@@ -1,0 +1,23 @@
+ErrorDocument 401 /401.php
+ErrorDocument 403 /403.php
+ErrorDocument 404 /404.php
+
+Options +FollowSymLinks
+
+RewriteEngine on
+
+RewriteRule ^error/401         error-401.php                   [L,QSA]
+RewriteRule ^error/403         error-403.php                   [L,QSA]
+RewriteRule ^error/404         error-404.php                   [L,QSA]
+
+RewriteRule ^movies/new        movie.php                       [L,QSA]
+RewriteRule ^movies/edit/(.*)  movie.php?movie_id=$1           [L,QSA]
+RewriteRule ^movies/(.*)       movie-detail.php?url_name=$1    [L,QSA]
+
+RewriteRule ^projections/new   projection.php                  [L,QSA]
+RewriteRule ^projections/(.*)  projection.php?projection_id=$1 [L,QSA]
+
+RewriteRule ^users/me          user-detail.php                 [L,QSA]
+RewriteRule ^users/(.*)        user-detail.php?user_id=$1      [L,QSA]
+
+RewriteRule ^password-reseted  password-reset.php?mailed=ok    [L,QSA]
