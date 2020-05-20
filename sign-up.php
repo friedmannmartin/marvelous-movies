@@ -61,7 +61,7 @@
 ?>
 
 <main class="d-flex align-items-center">
-    <div class="container-sm pt-5">
+    <div class="container-sm py-5">
         <div class="row">
             <div class="col">
                 <h2 class="pb-3">New user registration</h2>
