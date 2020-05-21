@@ -17,7 +17,7 @@ RewriteRule ^movies/(.*)       movie-detail.php?url_name=$1    [L,QSA]
 RewriteRule ^projections/new   projection.php                  [L,QSA]
 RewriteRule ^projections/(.*)  projection.php?projection_id=$1 [L,QSA]
 
-RewriteRule ^users/me          user-detail.php                 [L,QSA]
-RewriteRule ^users/(.*)        user-detail.php?user_id=$1      [L,QSA]
+RewriteRule ^settings          user-detail.php                 [L,QSA]
+RewriteRule ^user/(.*)         user-detail.php?user_id=$1      [L,QSA]
 
 RewriteRule ^password-reseted  password-reset.php?mailed=ok    [L,QSA]
