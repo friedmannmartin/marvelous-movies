@@ -224,32 +224,34 @@
                             <input type="hidden" name="act" value="change-password" />
 
                             <!-- Password -->
-                            <div class="form-group">
-                                <label for="password">Password:</label>
-                                <input type="password"
-                                    name="password"
-                                    id="password"
-                                    placeholder="Enter new password"
-                                    required
-                                    class="form-control <?php echo (!empty($errors['password'])?'is-invalid':''); ?>" />
-                                <?php if(!empty($errors['password'])):?>
-                                    <div class="invalid-feedback"><?= $errors['password'] ?></div>
-                                <?php endif ?>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="password">Password:</label>
+                                    <input type="password"
+                                        name="password"
+                                        id="password"
+                                        placeholder="Enter new password"
+                                        required
+                                        class="form-control <?php echo (!empty($errors['password'])?'is-invalid':''); ?>" />
+                                    <?php if(!empty($errors['password'])):?>
+                                        <div class="invalid-feedback"><?= $errors['password'] ?></div>
+                                    <?php endif ?>
+                                </div>
+
+                                <div class="form-group col">
+                                    <label for="password2">Confirm new password:</label>
+                                    <input type="password"
+                                        name="password2"
+                                        id="password2"
+                                        placeholder="Enter new password once more"
+                                        required
+                                        class="form-control <?php echo (!empty($errors['password2'])?'is-invalid':''); ?>" />
+                                    <?php if(!empty($errors['password2'])):?>
+                                        <div class="invalid-feedback"><?= $errors['password2'] ?></div>
+                                    <?php endif ?>
+                                </div>
                             </div>
 
-                            <!-- Confirm new password -->
-                            <div class="form-group">
-                                <label for="password2">Confirm new password:</label>
-                                <input type="password"
-                                    name="password2"
-                                    id="password2"
-                                    placeholder="Enter new password once more"
-                                    required
-                                    class="form-control <?php echo (!empty($errors['password2'])?'is-invalid':''); ?>" />
-                                <?php if(!empty($errors['password2'])):?>
-                                    <div class="invalid-feedback"><?= $errors['password2'] ?></div>
-                                <?php endif ?>
-                            </div>
 
                             <button type="submit" class="btn btn-primary">Change Password</button>
                         </form>
