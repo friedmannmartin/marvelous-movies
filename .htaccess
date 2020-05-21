@@ -1,23 +1,44 @@
 Options +FollowSymLinks
 
-ErrorDocument 401 /~frim00/marvelous-movies/error-401.php
-ErrorDocument 403 /~frim00/marvelous-movies/error-403.php
-ErrorDocument 404 /~frim00/marvelous-movies/error-404.php
+# Error Pages
+  ErrorDocument 401 /~frim00/marvelous-movies/error-401.php
+  ErrorDocument 403 /~frim00/marvelous-movies/error-403.php
+  ErrorDocument 404 /~frim00/marvelous-movies/error-404.php
 
 RewriteEngine on
 
-RewriteRule ^error/401         error-401.php                   [L,QSA]
-RewriteRule ^error/403         error-403.php                   [L,QSA]
-RewriteRule ^error/404         error-404.php                   [L,QSA]
+# Error Pages
+    RewriteRule ^error/401            error-401.php                        [L,QSA]
+    RewriteRule ^error/403            error-403.php                        [L,QSA]
+    RewriteRule ^error/404            error-404.php                        [L,QSA]
 
-RewriteRule ^movies/new        movie.php                       [L,QSA]
-RewriteRule ^movies/edit/(.*)  movie.php?movie_id=$1           [L,QSA]
-RewriteRule ^movies/(.*)       movie-detail.php?url_name=$1    [L,QSA]
+# Authentication
+  # RewriteRule ^sign-in              sign-in.php                          [L,QSA]
+  # RewriteRule ^sign-up              sign-up.php                          [L,QSA]
+  # RewriteRule ^sign-out             sign-out.php                         [L,QSA]
+  # RewriteRule ^password-reset       password-reset.php                   [L,QSA]
+    RewriteRule ^password-reseted     password-reset.php?mailed=ok         [L,QSA]
+  # RewriteRule ^password-renew       password-renew.php                   [L,QSA]
 
-RewriteRule ^projections/new   projection.php                  [L,QSA]
-RewriteRule ^projections/(.*)  projection.php?projection_id=$1 [L,QSA]
+# Homepage
+    RewriteRule ^home                 index.php                            [L,QSA]
 
-RewriteRule ^settings          user-detail.php                 [L,QSA]
-RewriteRule ^user/(.*)         user-detail.php?user_id=$1      [L,QSA]
+# Projections
+  # RewriteRule ^program              projections.php                      [L,QSA]
+    RewriteRule ^projection/new       projection-edit.php                  [L,QSA]
+    RewriteRule ^projection/edit/(.*) projection-edit.php?projection_id=$1 [L,QSA]
 
-RewriteRule ^password-reseted  password-reset.php?mailed=ok    [L,QSA]
+# Movies
+  # RewriteRule ^movies               movies.php                           [L,QSA]
+    RewriteRule ^movie/new            movie-edit.php                       [L,QSA]
+    RewriteRule ^movie/edit/(.*)      movie-edit.php?movie_id=$1           [L,QSA]
+    RewriteRule ^movie/(.*)           movie-detail.php?url_name=$1         [L,QSA]
+
+# Reservations
+  # RewriteRule ^reservations         reservations.php                     [L,QSA]
+  # TODO
+
+# Users
+  # RewriteRule ^users                users.php                            [L,QSA]
+    RewriteRule ^user/(.*)            user-detail.php?user_id=$1           [L,QSA]
+    RewriteRule ^settings             user-detail.php                      [L,QSA]
