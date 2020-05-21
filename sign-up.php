@@ -101,7 +101,7 @@
 
                     <!-- Password -->
                     <div class="form-row">
-                        <div class="form-group col">
+                        <div class="form-group col-sm">
                             <label for="password">Password:</label>
                             <input type="password"
                                 name="password"
@@ -116,7 +116,7 @@
                             <?php endif ?>
                         </div>
 
-                        <div class="form-group col">
+                        <div class="form-group col-sm">
                             <label for="password2">Password confirmation:</label>
                             <input type="password"
                                 name="password2"

@@ -225,7 +225,7 @@
 
                             <!-- Password -->
                             <div class="form-row">
-                                <div class="form-group col">
+                                <div class="form-group col-sm">
                                     <label for="password">Password:</label>
                                     <input type="password"
                                         name="password"
@@ -239,7 +239,7 @@
                                     <?php endif ?>
                                 </div>
 
-                                <div class="form-group col">
+                                <div class="form-group col-sm">
                                     <label for="password2">Confirm new password:</label>
                                     <input type="password"
                                         name="password2"
@@ -273,7 +273,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col align-self-center">
+            <div class="col d-none d-sm-block align-self-center">
                 <img src="./img/user-profile.svg" alt="User profile" class="img-fluid" width="600" height="360"/>
             </div>
         </div>
