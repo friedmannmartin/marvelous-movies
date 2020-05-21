@@ -269,7 +269,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col">
+            <div class="col align-self-center">
                 <img src="./img/user-profile.svg" alt="User profile" class="img-fluid" width="600" height="360"/>
             </div>
         </div>
