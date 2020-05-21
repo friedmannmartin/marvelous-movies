@@ -1,6 +1,7 @@
 Options +FollowSymLinks
 
 # Error Pages
+  ErrorDocument 400 /~frim00/marvelous-movies/error-400.php
   ErrorDocument 401 /~frim00/marvelous-movies/error-401.php
   ErrorDocument 403 /~frim00/marvelous-movies/error-403.php
   ErrorDocument 404 /~frim00/marvelous-movies/error-404.php
@@ -8,6 +9,7 @@ Options +FollowSymLinks
 RewriteEngine on
 
 # Error Pages
+    RewriteRule ^error/400            error-400.php                        [L,QSA]
     RewriteRule ^error/401            error-401.php                        [L,QSA]
     RewriteRule ^error/403            error-403.php                        [L,QSA]
     RewriteRule ^error/404            error-404.php                        [L,QSA]
@@ -32,7 +34,7 @@ RewriteEngine on
   # RewriteRule ^movies               movies.php                           [L,QSA]
     RewriteRule ^movie/new            movie-edit.php                       [L,QSA]
     RewriteRule ^movie/edit/(.*)      movie-edit.php?movie_id=$1           [L,QSA]
-    RewriteRule ^movie/(.*)           movie-detail.php?url_name=$1         [L,QSA]
+    RewriteRule ^movie/(.*)           movie-detail.php?url=$1              [L,QSA]
 
 # Reservations
   # RewriteRule ^reservations         reservations.php                     [L,QSA]
