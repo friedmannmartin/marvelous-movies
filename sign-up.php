@@ -108,6 +108,7 @@
                                 id="password"
                                 placeholder="Enter your password"
                                 autocomplete="new-password"
+                                data-toggle="password"
                                 required
                                 class="form-control <?php echo (!empty($errors['password'])?'is-invalid':''); ?>" />
                             <?php if(!empty($errors['password'])):?>
@@ -120,7 +121,8 @@
                             <input type="password"
                                 name="password2"
                                 id="password2"
-                                placeholder="Enter your password once more"
+                                placeholder="Enter your password again"
+                                data-toggle="password"
                                 required
                                 class="form-control <?php echo (!empty($errors['password2'])?'is-invalid':''); ?>" />
                             <?php if(!empty($errors['password2'])):?>

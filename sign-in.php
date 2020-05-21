@@ -81,26 +81,27 @@
                     <!-- Password -->
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password"
-                            name="password"
-                            id="password"
-                            placeholder="Enter your password"
-                            autocomplete="current-password"
-                            required
-                            class="form-control <?php echo ($errors?'is-invalid':''); ?>" />
+                            <input type="password"
+                                   name="password"
+                                   id="password"
+                                   placeholder="Enter your password"
+                                   autocomplete="current-password"
+                                   data-toggle="password"
+                                   required
+                                   class="form-control <?php echo ($errors?'is-invalid':''); ?>" />
                         <?php if($errors):?>
                             <div class="invalid-feedback">Username or password is wrong.</div>
                         <?php endif?>
                     </div>
 
                     <!-- Remember me -->
-                    <div class="form-group form-check">
+                    <div class="form-group custom-control custom-switch">
                         <input type="checkbox"
-                            name="remeber"
-                            id="remeber"
-                            value="true"
-                            class="form-check-input" />
-                        <label class="form-check-label" for="remeber">Remeber me</label>
+                               class="custom-control-input"
+                               name="remeber"
+                               id="remeber"
+                               value="true">
+                        <label class="custom-control-label" for="remeber">Remeber me</label>
                     </div>
 
                     <button type="submit"      class="btn btn-primary">Sign In</button>
@@ -117,5 +118,4 @@
         </div>
     </div>
 </main>
-
 <?php include './include/footer.php'; ?>

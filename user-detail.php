@@ -231,6 +231,7 @@
                                         name="password"
                                         id="password"
                                         placeholder="Enter new password"
+                                        data-toggle="password"
                                         required
                                         class="form-control <?php echo (!empty($errors['password'])?'is-invalid':''); ?>" />
                                     <?php if(!empty($errors['password'])):?>
@@ -244,6 +245,7 @@
                                         name="password2"
                                         id="password2"
                                         placeholder="Enter new password once more"
+                                        data-toggle="password"
                                         required
                                         class="form-control <?php echo (!empty($errors['password2'])?'is-invalid':''); ?>" />
                                     <?php if(!empty($errors['password2'])):?>

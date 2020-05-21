@@ -87,6 +87,7 @@
                        id="password"
                        placeholder="Enter your new password"
                        autocomplete="new-password"
+                       data-toggle="password"
                        required
                        class="form-control <?php echo ($invalidPassword ? 'is-invalid':'') ?>"/>
                 <?php if ($invalidPassword):?>
@@ -101,6 +102,7 @@
                         name="password2"
                         id="password2"
                         placeholder="Enter your new password once more"
+                        data-toggle="password"
                         required
                         class="form-control <?php echo ($invalidPassword?'is-invalid':'') ?>" />
             </div>
