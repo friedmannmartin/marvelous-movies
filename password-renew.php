@@ -3,6 +3,13 @@
     require_once './include/auth.php';
     unauthorizedUsersOnly();
 
+    /*  */
+    if(empty($_REQUEST['code'])){
+        header("HTTP/1.1 400 Bad Request");
+        header("Location: ./error-400");
+        exit();
+    }
+
     /* If there is posted form try renew password */
     $invalidCode=false;
     $invalidPassword=false;
@@ -80,32 +87,39 @@
         <form method="post">
 
             <!-- Password -->
-            <div class="form-group">
-                <label for="password">New password:</label>
-                <input type="password"
-                       name="password"
-                       id="password"
-                       placeholder="Enter your new password"
-                       autocomplete="new-password"
-                       data-toggle="password"
-                       required
-                       class="form-control <?php echo ($invalidPassword ? 'is-invalid':'') ?>"/>
+            <div class="form-row">
+
+                <div class="form-group col-sm">
+                    <label for="password">New password:</label>
+                    <input type="password"
+                           name="password"
+                           id="password"
+                           placeholder="Enter your new password"
+                           autocomplete="new-password"
+                           data-toggle="password"
+                           required
+                           class="form-control <?php echo ($invalidPassword ? 'is-invalid':'') ?>"/>
                 <?php if ($invalidPassword):?>
-                  <div class="invalid-feedback"><?=$invalidPassword?></div>
+                    <div class="invalid-feedback"><?=$invalidPassword?></div>
+                <?php endif ?>
+                </div>
+
+                <div class="form-group col-sm">
+                    <label for="password2">Password confirmation:</label>
+                    <input type="password"
+                           name="password2"
+                           id="password2"
+                           placeholder="Enter your new password once more"
+                           autocomplete="new-password"
+                           data-toggle="password"
+                           required
+                           class="form-control <?php echo ($invalidPassword?'is-invalid':'') ?>" />
+                </div>
+                <?php if ($invalidPassword):?>
+                    <div class="invalid-feedback"><?=$invalidPassword?></div>
                 <?php endif ?>
             </div>
 
-            <!-- Password confirmation -->
-            <div class="form-group">
-                <label for="password2">Password confirmation:</label>
-                <input type="password"
-                        name="password2"
-                        id="password2"
-                        placeholder="Enter your new password once more"
-                        data-toggle="password"
-                        required
-                        class="form-control <?php echo ($invalidPassword?'is-invalid':'') ?>" />
-            </div>
 
             <input type="hidden" name="code"    value="<?= htmlspecialchars($_REQUEST['code']) ?>" />
             <input type="hidden" name="user"    value="<?= htmlspecialchars($_REQUEST['user']) ?>" />
