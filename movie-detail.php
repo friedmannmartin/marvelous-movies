@@ -29,7 +29,7 @@
 
         <?php if(@$authenticatedUser['admin']): ?>
         <!-- Show only to admin -->
-            <a href="./movie/edit/<?= $movie['url']?>" class="btn btn-primary float-right">Edit movie</a>
+            <a href="./movie/edit/<?= $movie['movie_id']?>" class="btn btn-primary float-right">Edit movie</a>
         <?php endif ?>
 
         <h2 class="pb-3"><?= htmlspecialchars($movie['name']) ?></h2>
