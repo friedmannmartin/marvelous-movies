@@ -16,14 +16,14 @@
         /* Email validation */
         $email = trim(@$_POST['email']);
         if (!filter_var($email,FILTER_VALIDATE_EMAIL)){
-            $errors['name']='You need to enter valid email address.';
+            $errors['email']='You need to enter valid email address.';
         }else{
             $mailQuery=$db->prepare('SELECT * FROM users WHERE email=:email LIMIT 1;');
             $mailQuery->execute([
                 ':email'=>$email
             ]);
             if ($mailQuery->rowCount() > 0){
-                $errors['name']='User account with this email address already exists.';
+                $errors['email']='User account with this email address already exists.';
             }
         }
 
