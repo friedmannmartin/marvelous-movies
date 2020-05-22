@@ -29,16 +29,13 @@ RewriteEngine on
   # RewriteRule ^program              projections.php                      [L,QSA]
     RewriteRule ^projection/new       projection-edit.php                  [L,QSA]
     RewriteRule ^projection/edit/(.*) projection-edit.php?projection_id=$1 [L,QSA]
+  # RewriteRule ^reservations         reservations.php                     [L,QSA]
 
 # Movies
   # RewriteRule ^movies               movies.php                           [L,QSA]
     RewriteRule ^movie/new            movie-edit.php                       [L,QSA]
     RewriteRule ^movie/edit/(.*)      movie-edit.php?movie_id=$1           [L,QSA]
     RewriteRule ^movie/(.*)           movie-detail.php?url=$1              [L,QSA]
-
-# Reservations
-  # RewriteRule ^reservations         reservations.php                     [L,QSA]
-  # TODO
 
 # Users
   # RewriteRule ^users                users.php                            [L,QSA]
