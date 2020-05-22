@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: localhost
--- Vytvořeno: Pát 22. kvě 2020, 19:55
+-- Vytvořeno: Pát 22. kvě 2020, 23:56
 -- Verze serveru: 10.3.22-MariaDB-log
 -- Verze PHP: 7.3.16
 
@@ -53,7 +53,7 @@ CREATE TABLE `movies` (
   `movie_id` int(11) NOT NULL,
   `url` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL,
-  `age_restriction` varchar(5) COLLATE utf8mb4_czech_ci DEFAULT 'G',
+  `age_restriction` varchar(5) COLLATE utf8mb4_czech_ci NOT NULL DEFAULT 'G',
   `year` int(11) NOT NULL,
   `description` text COLLATE utf8mb4_czech_ci NOT NULL,
   `length` int(11) NOT NULL,
@@ -88,8 +88,7 @@ INSERT INTO `movies` (`movie_id`, `url`, `name`, `age_restriction`, `year`, `des
 (20, 'ant-man-and-the-wasp', 'Ant-Man and the Wasp', 'PG-13', 2018, 'From the Marvel Cinematic Universe comes a new chapter featuring heroes with the astonishing ability to shrink: “Ant-Man and The Wasp.” In the aftermath of “Captain America: Civil War,” Scott Lang (Paul Rudd) grapples with the consequences of his choices as both a Super Hero and a father. As he struggles to rebalance his home life with his responsibilities as Ant-Man, he’s confronted by Hope van Dyne (Evangeline Lilly) and Dr. Hank Pym (Michael Douglas) with an urgent new mission. Scott must once again put on the suit and learn to fight alongside The Wasp as the team works together to uncover secrets from their past.', 118, 'fmrdsRdYZlg', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ant-manthewasp_lob_crd_01_0.jpg'),
 (21, 'captain-marvel', 'Captain Marvel', 'PG-13', 2019, 'Set in the 1990s, Marvel Studios\' \"Captain Marvel\" is an all-new adventure from a previously unseen period in the history of the Marvel Cinematic Universe that follows the journey of Carol Danvers as she becomes one of the universe\'s most powerful heroes. While a galactic war between two alien races reaches Earth, Danvers finds herself and a small cadre of allies at the center of the maelstrom.', 125, '0UUeH8DF8uA', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/captainmarvel_lob_crd_06.jpg'),
 (22, 'avengers:-endgame', 'Avengers: Endgame', 'PG-13', 2019, 'The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios\' grand conclusion to twenty-two films, \"Avengers: Endgame.\"', 182, 'ee1172yeqyE', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersendgame_lob_crd_05.jpg'),
-(23, 'spider-man:-far-from-home', 'Spider-Man: Far From Home', 'PG-13', 2019, 'Following the events of Avengers: Endgame, Spider-Man must step up to take on new threats in a world that has changed forever.', 129, 'Nt9L1jCKGnE', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/spider-manfarfromhome_lob_crd_04_0.jpg'),
-(26, 'test', 'Test2', 'R', 1970, 'test test', 1, 'txIUXG29vzc', 'https://cdn4.buysellads.net/uu/1/65221/1589306848-Carbon_CTA-Copy-2_2x.jpg');
+(23, 'spider-man:-far-from-home', 'Spider-Man: Far From Home', 'PG-13', 2019, 'Following the events of Avengers: Endgame, Spider-Man must step up to take on new threats in a world that has changed forever.', 129, 'Nt9L1jCKGnE', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/spider-manfarfromhome_lob_crd_04_0.jpg');
 
 -- --------------------------------------------------------
 
@@ -113,7 +112,102 @@ CREATE TABLE `projections` (
 --
 
 INSERT INTO `projections` (`projection_id`, `movie_id`, `datetime`, `language`, `subtittles`, `dimensions`, `capacity`, `hall`) VALUES
-(1, 1, '2020-05-21 18:00:00', 'EN', 'CS', '2D', 50, 'Main');
+(1, 1, '2020-05-27 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(2, 1, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(3, 1, '2020-05-27 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
+(4, 1, '2020-05-27 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
+(5, 1, '2020-05-27 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(6, 1, '2020-05-27 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
+(7, 1, '2020-05-27 18:00:00', 'CZ', '', '3D', 50, 'Main'),
+(8, 1, '2020-05-27 14:00:00', 'CZ', '', '3D', 50, 'Main'),
+(9, 1, '2020-05-27 11:30:00', 'CZ', '', '3D', 50, 'Main'),
+(10, 1, '2020-05-27 20:10:00', 'CZ', '', '3D', 50, 'Main'),
+(11, 1, '2020-05-27 12:00:00', 'CZ', '', '3D', 50, 'Main'),
+(12, 1, '2020-05-27 17:40:00', 'CZ', '', '3D', 50, 'Main'),
+(13, 1, '2020-05-28 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(14, 1, '2020-05-28 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(15, 1, '2020-05-28 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
+(16, 1, '2020-05-28 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
+(17, 1, '2020-05-28 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(18, 1, '2020-05-28 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
+(19, 1, '2020-05-28 18:00:00', 'CZ', '', '3D', 50, 'Main'),
+(20, 1, '2020-05-28 14:00:00', 'CZ', '', '3D', 50, 'Main'),
+(21, 1, '2020-05-28 11:30:00', 'CZ', '', '3D', 50, 'Main'),
+(22, 1, '2020-05-28 20:10:00', 'CZ', '', '3D', 50, 'Main'),
+(23, 1, '2020-05-28 12:00:00', 'CZ', '', '3D', 50, 'Main'),
+(24, 1, '2020-05-28 17:40:00', 'CZ', '', '3D', 50, 'Main'),
+(25, 8, '2020-05-27 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(26, 8, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(27, 8, '2020-05-27 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
+(28, 8, '2020-05-27 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
+(29, 8, '2020-05-27 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(30, 8, '2020-05-27 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
+(31, 8, '2020-05-27 18:00:00', 'CZ', '', '3D', 50, 'Main'),
+(32, 8, '2020-05-27 14:00:00', 'CZ', '', '3D', 50, 'Main'),
+(33, 8, '2020-05-27 11:30:00', 'CZ', '', '3D', 50, 'Main'),
+(34, 8, '2020-05-27 20:10:00', 'CZ', '', '3D', 50, 'Main'),
+(35, 8, '2020-05-27 12:00:00', 'CZ', '', '3D', 50, 'Main'),
+(36, 8, '2020-05-27 17:40:00', 'CZ', '', '3D', 50, 'Main'),
+(37, 8, '2020-05-28 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(38, 8, '2020-05-28 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(39, 8, '2020-05-28 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
+(40, 8, '2020-05-28 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
+(41, 8, '2020-05-28 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(42, 8, '2020-05-28 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
+(43, 8, '2020-05-28 18:00:00', 'CZ', '', '3D', 50, 'Main'),
+(44, 8, '2020-05-28 14:00:00', 'CZ', '', '3D', 50, 'Main'),
+(45, 8, '2020-05-28 11:30:00', 'CZ', '', '3D', 50, 'Main'),
+(46, 8, '2020-05-28 20:10:00', 'CZ', '', '3D', 50, 'Main'),
+(47, 8, '2020-05-28 12:00:00', 'CZ', '', '3D', 50, 'Main'),
+(48, 8, '2020-05-28 17:40:00', 'CZ', '', '3D', 50, 'Main'),
+(49, 20, '2020-05-27 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(50, 20, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(51, 20, '2020-05-27 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
+(52, 20, '2020-05-27 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
+(53, 20, '2020-05-27 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(54, 20, '2020-05-27 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
+(55, 20, '2020-05-27 18:00:00', 'CZ', '', '3D', 50, 'Main'),
+(56, 20, '2020-05-27 14:00:00', 'CZ', '', '3D', 50, 'Main'),
+(57, 20, '2020-05-27 11:30:00', 'CZ', '', '3D', 50, 'Main'),
+(58, 20, '2020-05-27 20:10:00', 'CZ', '', '3D', 50, 'Main'),
+(59, 20, '2020-05-27 12:00:00', 'CZ', '', '3D', 50, 'Main'),
+(60, 20, '2020-05-27 17:40:00', 'CZ', '', '3D', 50, 'Main'),
+(61, 20, '2020-05-28 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(62, 20, '2020-05-28 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(63, 20, '2020-05-28 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
+(64, 20, '2020-05-28 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
+(65, 20, '2020-05-28 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(66, 20, '2020-05-28 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
+(67, 20, '2020-05-28 18:00:00', 'CZ', '', '3D', 50, 'Main'),
+(68, 20, '2020-05-28 14:00:00', 'CZ', '', '3D', 50, 'Main'),
+(69, 20, '2020-05-28 11:30:00', 'CZ', '', '3D', 50, 'Main'),
+(70, 20, '2020-05-28 20:10:00', 'CZ', '', '3D', 50, 'Main'),
+(71, 20, '2020-05-28 12:00:00', 'CZ', '', '3D', 50, 'Main'),
+(72, 20, '2020-05-28 17:40:00', 'CZ', '', '3D', 50, 'Main'),
+(73, 16, '2020-05-27 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(74, 16, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(75, 16, '2020-05-27 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
+(76, 16, '2020-05-27 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
+(77, 16, '2020-05-27 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(78, 16, '2020-05-27 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
+(79, 16, '2020-05-27 18:00:00', 'CZ', '', '3D', 50, 'Main'),
+(80, 16, '2020-05-27 14:00:00', 'CZ', '', '3D', 50, 'Main'),
+(81, 16, '2020-05-27 11:30:00', 'CZ', '', '3D', 50, 'Main'),
+(82, 16, '2020-05-27 20:10:00', 'CZ', '', '3D', 50, 'Main'),
+(83, 16, '2020-05-27 12:00:00', 'CZ', '', '3D', 50, 'Main'),
+(84, 16, '2020-05-27 17:40:00', 'CZ', '', '3D', 50, 'Main'),
+(85, 16, '2020-05-28 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(86, 16, '2020-05-28 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(87, 16, '2020-05-28 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
+(88, 16, '2020-05-28 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
+(89, 16, '2020-05-28 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(90, 16, '2020-05-28 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
+(91, 16, '2020-05-28 18:00:00', 'CZ', '', '3D', 50, 'Main'),
+(92, 16, '2020-05-28 14:00:00', 'CZ', '', '3D', 50, 'Main'),
+(93, 16, '2020-05-28 11:30:00', 'CZ', '', '3D', 50, 'Main'),
+(94, 16, '2020-05-28 20:10:00', 'CZ', '', '3D', 50, 'Main'),
+(95, 16, '2020-05-28 12:00:00', 'CZ', '', '3D', 50, 'Main'),
+(96, 16, '2020-05-28 17:40:00', 'CZ', '', '3D', 50, 'Main');
 
 -- --------------------------------------------------------
 
@@ -205,13 +299,13 @@ ALTER TABLE `forgotten_passwords`
 -- AUTO_INCREMENT pro tabulku `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pro tabulku `projections`
 --
 ALTER TABLE `projections`
-  MODIFY `projection_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `projection_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT pro tabulku `reservations`
