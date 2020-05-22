@@ -9,7 +9,7 @@
 
 <main class="d-flex align-items-center">
     <div class="container-sm py-5 text-center">
-        <img src="./img/error/404.svg" alt="Error 404 - Not Found" class="img-fluid" width="600" height="360"/>
+        <img src="./img/error-404.svg" alt="Error 404 - Not Found" class="img-fluid" width="600" height="360"/>
         <h2 class="py-3"><span class="badge badge-danger">Error 404</span> Not Found</h2>
         <a class="btn btn-primary" href="./">Return to Homepage</a>
     </div>
