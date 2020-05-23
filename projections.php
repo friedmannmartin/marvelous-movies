@@ -32,7 +32,7 @@
     include './include/header.php';
 ?>
 
-<main class="d-flex align-items-center">
+<main>
     <div class="container-sm py-5">
         <h2 class="pb-3">Program</h2>
 
@@ -56,10 +56,6 @@
                 <a href="./program/<?= $nextDay->format('Y-m-d') ?>" class="btn btn-secondary">Next day</a>
             </div>
         </div>
-
-
-
-
 
         <?php if(empty($projectionTypes)): ?>
             <hr>

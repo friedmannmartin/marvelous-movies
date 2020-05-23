@@ -151,171 +151,171 @@
 ?>
 
 <main class="d-flex align-items-center">
-<div class="container-sm py-5">
+    <div class="container-sm py-5">
 
-    <?php if(!empty($_GET['movie_id'])): ?>
-    <form method="post" class="d-inline">
-        <input type="hidden" name="delete-movie" value="true">
-        <input type="submit" class="btn btn-danger float-right" value="Delete movie">
-    </form>
-    <?php endif ?>
+        <?php if(!empty($_GET['movie_id'])): ?>
+        <form method="post" class="d-inline">
+            <input type="hidden" name="delete-movie" value="true">
+            <input type="submit" class="btn btn-danger float-right" value="Delete movie">
+        </form>
+        <?php endif ?>
 
-    <h2 class="pb-3"><?= $pageTitle ?></h2>
+        <h2 class="pb-3"><?= $pageTitle ?></h2>
 
-    <form method="post">
+        <form method="post">
 
-            <!-- Name -->
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text"
-                    name="name"
-                    id="name"
-                    placeholder="Enter name of the movie"
-                    required
-                    class="form-control <?php echo (!empty($errors['name'])?'is-invalid':''); ?>"
-                    value="<?php echo htmlspecialchars(@$movie['name']);?>" />
-                <?php if(!empty($errors['name'])):?>
-                    <div class="invalid-feedback"><?= $errors['name'] ?></div>
-                <?php endif ?>
-            </div>
-
-            <!-- URL -->
-            <div class="form-group">
-                <label for="url">URL:</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="url">https://marvelous-movies.com/movie/</span>
-                    </div>
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="name">Name:</label>
                     <input type="text"
-                           name="url"
-                           id="url"
-                           placeholder="Enter uniqie URL for the movie"
-                           aria-describedby="url"
-                           required
-                           class="form-control <?php echo (!empty($errors['url'])?'is-invalid':''); ?>"
-                           value="<?php echo htmlspecialchars(@$movie['url']);?>" />
-                    <?php if(!empty($errors['url'])):?>
-                        <div class="invalid-feedback"><?= $errors['url'] ?></div>
-                    <?php endif ?>
-                </div>
-            </div>
-
-            <!-- Trailer -->
-            <div class="form-group">
-                <label for="url">Trailer:</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="url">https://www.youtube.com/watch?v=</span>
-                    </div>
-                    <input type="text"
-                           name="trailer"
-                           id="trailer"
-                           placeholder="Enter YouTube video ID for the movie trailer"
-                           aria-describedby="trailer"
-                           required
-                           class="form-control <?php echo (!empty($errors['trailer'])?'is-invalid':''); ?>"
-                           value="<?php echo htmlspecialchars(@$movie['trailer']);?>" />
-                    <?php if(!empty($errors['trailer'])):?>
-                        <div class="invalid-feedback"><?= $errors['trailer'] ?></div>
-                    <?php endif ?>
-                </div>
-            </div>
-
-            <!-- Poster -->
-            <div class="form-group">
-                <label for="name">Poster:</label>
-                <input type="text"
-                    name="poster"
-                    id="poster"
-                    placeholder="Enter URL of the movie poster"
-                    required
-                    class="form-control <?php echo (!empty($errors['poster'])?'is-invalid':''); ?>"
-                    value="<?php echo htmlspecialchars(@$movie['poster']);?>" />
-                <?php if(!empty($errors['poster'])):?>
-                    <div class="invalid-feedback"><?= $errors['poster'] ?></div>
-                <?php endif ?>
-            </div>
-
-            <div class="form-row">
-
-                <!-- Age restriction -->
-                <div class="form-group col-sm">
-                    <label for="age-restriction">Select age restriction:</label>
-                    <select name="age-restriction"
-                            id="age-restriction"
-                            required
-                            class="form-control <?php echo (!empty($errors['age-restriction'])?'is-invalid':''); ?>">
-                        <option value="" disabled selected>Select age restriction</option>
-                        <option <?php echo (@$movie['age_restriction']=="G")?    'selected':'' ?> value="G">G</option>
-                        <option <?php echo (@$movie['age_restriction']=="PG")?   'selected':'' ?> value="PG">PG</option>
-                        <option <?php echo (@$movie['age_restriction']=="PG-13")?'selected':'' ?> value="PG-13">PG-13</option>
-                        <option <?php echo (@$movie['age_restriction']=="R")?    'selected':'' ?> value="R">R</option>
-                        <option <?php echo (@$movie['age_restriction']=="NC-17")?'selected':'' ?> value="NC-17">NC-17</option>
-
-                    </select>
-                    <?php if(!empty($errors['age-restriction'])):?>
-                        <div class="invalid-feedback"><?= $errors['age-restriction'] ?></div>
+                        name="name"
+                        id="name"
+                        placeholder="Enter name of the movie"
+                        required
+                        class="form-control <?php echo (!empty($errors['name'])?'is-invalid':''); ?>"
+                        value="<?php echo htmlspecialchars(@$movie['name']);?>" />
+                    <?php if(!empty($errors['name'])):?>
+                        <div class="invalid-feedback"><?= $errors['name'] ?></div>
                     <?php endif ?>
                 </div>
 
-                <!-- Year-->
-                <div class="form-group col-sm">
-                    <label for="year">Year:</label>
-                    <input type="number"
-                           name="year"
-                           id="year"
-                           placeholder="Enter year when was movie released"
-                           min="1970"
-                           max="2020"
-                           required
-                           class="form-control <?php echo (!empty($errors['year'])?'is-invalid':''); ?>"
-                           value="<?php echo htmlspecialchars(@$movie['year']);?>" />
-                    <?php if(!empty($errors['year'])):?>
-                        <div class="invalid-feedback"><?= $errors['year'] ?></div>
-                    <?php endif ?>
-                </div>
-
-                <!-- Length-->
-                <div class="form-group col-sm">
-                    <label for="length">Length:</label>
+                <!-- URL -->
+                <div class="form-group">
+                    <label for="url">URL:</label>
                     <div class="input-group">
-                        <input type="number"
-                               name="length"
-                               id="length"
-                               placeholder="Enter length of the movie"
-                               aria-describedby="length"
-                               min="1"
-                               required
-                               class="form-control <?php echo (!empty($errors['length'])?'is-invalid':''); ?>"
-                               value="<?php echo htmlspecialchars(@$movie['length']);?>" />
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="length">min</span>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="url">https://marvelous-movies.com/movie/</span>
                         </div>
+                        <input type="text"
+                            name="url"
+                            id="url"
+                            placeholder="Enter uniqie URL for the movie"
+                            aria-describedby="url"
+                            required
+                            class="form-control <?php echo (!empty($errors['url'])?'is-invalid':''); ?>"
+                            value="<?php echo htmlspecialchars(@$movie['url']);?>" />
+                        <?php if(!empty($errors['url'])):?>
+                            <div class="invalid-feedback"><?= $errors['url'] ?></div>
+                        <?php endif ?>
                     </div>
-                    <?php if(!empty($errors['length'])):?>
-                        <div class="invalid-feedback"><?= $errors['length'] ?></div>
+                </div>
+
+                <!-- Trailer -->
+                <div class="form-group">
+                    <label for="url">Trailer:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="url">https://www.youtube.com/watch?v=</span>
+                        </div>
+                        <input type="text"
+                            name="trailer"
+                            id="trailer"
+                            placeholder="Enter YouTube video ID for the movie trailer"
+                            aria-describedby="trailer"
+                            required
+                            class="form-control <?php echo (!empty($errors['trailer'])?'is-invalid':''); ?>"
+                            value="<?php echo htmlspecialchars(@$movie['trailer']);?>" />
+                        <?php if(!empty($errors['trailer'])):?>
+                            <div class="invalid-feedback"><?= $errors['trailer'] ?></div>
+                        <?php endif ?>
+                    </div>
+                </div>
+
+                <!-- Poster -->
+                <div class="form-group">
+                    <label for="name">Poster:</label>
+                    <input type="text"
+                        name="poster"
+                        id="poster"
+                        placeholder="Enter URL of the movie poster"
+                        required
+                        class="form-control <?php echo (!empty($errors['poster'])?'is-invalid':''); ?>"
+                        value="<?php echo htmlspecialchars(@$movie['poster']);?>" />
+                    <?php if(!empty($errors['poster'])):?>
+                        <div class="invalid-feedback"><?= $errors['poster'] ?></div>
                     <?php endif ?>
                 </div>
 
-            </div>
+                <div class="form-row">
 
-            <!-- Description-->
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea name="description"
-                          id="description"
-                          placeholder="Type movie description"
-                          rows="4"
-                          required
-                          class="form-control <?php echo (!empty($errors['description'])?'is-invalid':''); ?>"
-                          ><?= htmlspecialchars(@$movie['description']);?></textarea>
-                <?php if(!empty($errors['description'])):?>
-                    <div class="invalid-feedback"><?= $errors['description'] ?></div>
-                <?php endif ?>
-            </div>
+                    <!-- Age restriction -->
+                    <div class="form-group col-sm">
+                        <label for="age-restriction">Select age restriction:</label>
+                        <select name="age-restriction"
+                                id="age-restriction"
+                                required
+                                class="form-control <?php echo (!empty($errors['age-restriction'])?'is-invalid':''); ?>">
+                            <option value="" disabled selected>Select age restriction</option>
+                            <option <?php echo (@$movie['age_restriction']=="G")?    'selected':'' ?> value="G">G</option>
+                            <option <?php echo (@$movie['age_restriction']=="PG")?   'selected':'' ?> value="PG">PG</option>
+                            <option <?php echo (@$movie['age_restriction']=="PG-13")?'selected':'' ?> value="PG-13">PG-13</option>
+                            <option <?php echo (@$movie['age_restriction']=="R")?    'selected':'' ?> value="R">R</option>
+                            <option <?php echo (@$movie['age_restriction']=="NC-17")?'selected':'' ?> value="NC-17">NC-17</option>
 
-            <button type="submit" class="btn btn-primary">Save</button>
-            <a href="./movies"    class="btn btn-light">Cancel</a>
+                        </select>
+                        <?php if(!empty($errors['age-restriction'])):?>
+                            <div class="invalid-feedback"><?= $errors['age-restriction'] ?></div>
+                        <?php endif ?>
+                    </div>
+
+                    <!-- Year-->
+                    <div class="form-group col-sm">
+                        <label for="year">Year:</label>
+                        <input type="number"
+                            name="year"
+                            id="year"
+                            placeholder="Enter year when was movie released"
+                            min="1970"
+                            max="2020"
+                            required
+                            class="form-control <?php echo (!empty($errors['year'])?'is-invalid':''); ?>"
+                            value="<?php echo htmlspecialchars(@$movie['year']);?>" />
+                        <?php if(!empty($errors['year'])):?>
+                            <div class="invalid-feedback"><?= $errors['year'] ?></div>
+                        <?php endif ?>
+                    </div>
+
+                    <!-- Length-->
+                    <div class="form-group col-sm">
+                        <label for="length">Length:</label>
+                        <div class="input-group">
+                            <input type="number"
+                                name="length"
+                                id="length"
+                                placeholder="Enter length of the movie"
+                                aria-describedby="length"
+                                min="1"
+                                required
+                                class="form-control <?php echo (!empty($errors['length'])?'is-invalid':''); ?>"
+                                value="<?php echo htmlspecialchars(@$movie['length']);?>" />
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="length">min</span>
+                            </div>
+                        </div>
+                        <?php if(!empty($errors['length'])):?>
+                            <div class="invalid-feedback"><?= $errors['length'] ?></div>
+                        <?php endif ?>
+                    </div>
+
+                </div>
+
+                <!-- Description-->
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea name="description"
+                            id="description"
+                            placeholder="Type movie description"
+                            rows="4"
+                            required
+                            class="form-control <?php echo (!empty($errors['description'])?'is-invalid':''); ?>"
+                            ><?= htmlspecialchars(@$movie['description']);?></textarea>
+                    <?php if(!empty($errors['description'])):?>
+                        <div class="invalid-feedback"><?= $errors['description'] ?></div>
+                    <?php endif ?>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="./movies"    class="btn btn-light">Cancel</a>
         </form>
     </div>
 </main>
