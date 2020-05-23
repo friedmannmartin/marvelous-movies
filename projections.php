@@ -36,6 +36,12 @@
     <div class="container-sm py-5">
         <h2 class="pb-3">Program</h2>
 
+        <?php if(@$authenticatedUser['admin']): ?>
+            <a href="./projection/new" class="btn btn-primary float-right">
+                Add projection
+            </a>
+        <?php endif ?>
+
         <div class="btn-toolbar pb-3" role="toolbar">
             <div class="btn-group mr-2">
                 <a href="./program/today" class="btn btn-primary">Today</a>
@@ -50,6 +56,10 @@
                 <a href="./program/<?= $nextDay->format('Y-m-d') ?>" class="btn btn-secondary">Next day</a>
             </div>
         </div>
+
+
+
+
 
         <?php if(empty($projectionTypes)): ?>
             <hr>
