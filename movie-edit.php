@@ -308,7 +308,7 @@
                           rows="4"
                           required
                           class="form-control <?php echo (!empty($errors['description'])?'is-invalid':''); ?>"
-                          ><?php echo htmlspecialchars(@$movie['description']);?></textarea>
+                          ><?= htmlspecialchars(@$movie['description']);?></textarea>
                 <?php if(!empty($errors['description'])):?>
                     <div class="invalid-feedback"><?= $errors['description'] ?></div>
                 <?php endif ?>

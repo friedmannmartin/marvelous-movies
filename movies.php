@@ -20,7 +20,7 @@
                 <a href="./movie/<?= $movie['url']?>">
                     <div class="card m-1">
                         <img class="card-img-left"
-                             src="<?= $movie['poster'] ?>"
+                             src="<?= htmlspecialchars($movie['poster']) ?>"
                              alt="<?= htmlspecialchars($movie['name']) ?>"
                              width="172" height="255"/>
                     </div>

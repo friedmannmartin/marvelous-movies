@@ -272,6 +272,7 @@
                         <button type="submit" class="btn btn-danger">Delete account</button>
                     </form>
                 </div>
+                
             </div>
             <div class="col d-none d-sm-block align-self-center">
                 <img src="./img/user-profile.svg" alt="User profile" class="img-fluid" width="600" height="360"/>
