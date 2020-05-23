@@ -85,7 +85,7 @@
                         <a class="dropdown-item <?php echo ($pageTitle != 'Reservations') ?: 'active' ?>" href="./reservations">Reservations</a>
                         <a class="dropdown-item <?php echo ($pageTitle != 'Settings') ?: 'active' ?>" href="./settings">Settings</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="./sign-out">Sign out</a>
+                        <a class="dropdown-item text-danger" href="./sign-out">Sign out</a>
                     </div>
                 </li>
                 <?php endif ?>

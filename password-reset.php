@@ -71,8 +71,10 @@
   <div class="container-sm py-5">
     <h2 class="pb-3">Forgotten password reset</h2>
         <?php if(@$_GET['mailed']=='ok'): ?>
-            <p>Check your inbox for e-mail with link, which will allow you to change your password.</p>
-            <a href="./" class="btn btn-primary">Go back to homepage</a>
+            <div class="alert alert-success">
+                <p>Check your inbox for e-mail with link, which will allow you to change your password.</p>
+                <a href="./" class="btn btn-success">Go back to homepage</a>
+            </div>
         <?php else: ?>
         <form method="post">
 
