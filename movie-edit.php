@@ -16,7 +16,7 @@
             exit();
         }
 
-        /* $authenticatedUser - Currently logged in user */
+        /* $movie - Currently edited movie */
         $movie = $movieQuery->fetch(PDO::FETCH_ASSOC);
     }
 
