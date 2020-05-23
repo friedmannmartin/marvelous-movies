@@ -50,7 +50,7 @@
                     <a class="nav-link" href="./">Home</a>
                 </li>
                 <li class="nav-item <?php echo ($pageTitle != 'Program') ?: 'active' ?>">
-                    <a class="nav-link" href="./program">Program</a>
+                    <a class="nav-link" href="./program/today">Program</a>
                 </li>
                 <li class="nav-item <?php echo ($pageTitle != 'Movies') ?: 'active' ?>">
                     <a class="nav-link" href="./movies">Movies</a>

@@ -26,7 +26,8 @@ RewriteEngine on
     RewriteRule ^home                 index.php                            [L,QSA]
 
 # Projections
-  # RewriteRule ^program              projections.php                      [L,QSA]
+    RewriteRule ^program/today        projections.php                      [L,QSA]
+    RewriteRule ^program/(.*)         projections.php?date=$1              [L,QSA]
     RewriteRule ^projection/new       projection-edit.php                  [L,QSA]
     RewriteRule ^projection/edit/(.*) projection-edit.php?projection_id=$1 [L,QSA]
 
