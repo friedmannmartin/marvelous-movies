@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: localhost
--- Vytvořeno: Pát 22. kvě 2020, 23:56
+-- Vytvořeno: Pon 25. kvě 2020, 01:23
 -- Verze serveru: 10.3.22-MariaDB-log
 -- Verze PHP: 7.3.16
 
@@ -34,14 +34,6 @@ CREATE TABLE `forgotten_passwords` (
   `code` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL,
   `created` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci;
-
---
--- Vypisuji data pro tabulku `forgotten_passwords`
---
-
-INSERT INTO `forgotten_passwords` (`forgotten_password_id`, `user_id`, `code`, `created`) VALUES
-(7, 8, 'xx180785', '2020-05-20 22:47:03'),
-(8, 8, 'xx919419', '2020-05-21 15:39:55');
 
 -- --------------------------------------------------------
 
@@ -113,7 +105,7 @@ CREATE TABLE `projections` (
 
 INSERT INTO `projections` (`projection_id`, `movie_id`, `datetime`, `language`, `subtittles`, `dimensions`, `capacity`, `hall`) VALUES
 (1, 1, '2020-05-27 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(2, 1, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
+(2, 1, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 2, 'Main'),
 (3, 1, '2020-05-27 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
 (4, 1, '2020-05-27 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
 (5, 1, '2020-05-27 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
@@ -221,6 +213,24 @@ CREATE TABLE `reservations` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci;
 
+--
+-- Vypisuji data pro tabulku `reservations`
+--
+
+INSERT INTO `reservations` (`reservation_id`, `projection_id`, `user_id`) VALUES
+(1, 2, 5),
+(2, 2, 8),
+(4, 21, 5),
+(5, 21, 5),
+(6, 79, 5),
+(8, 96, 5),
+(9, 96, 5),
+(17, 7, 5),
+(18, 7, 5),
+(19, 7, 5),
+(20, 7, 5),
+(21, 27, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -277,7 +287,7 @@ ALTER TABLE `projections`
 ALTER TABLE `reservations`
   ADD PRIMARY KEY (`reservation_id`),
   ADD KEY `projection_id` (`projection_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `reservations_ibfk_2` (`user_id`);
 
 --
 -- Klíče pro tabulku `users`
@@ -299,25 +309,25 @@ ALTER TABLE `forgotten_passwords`
 -- AUTO_INCREMENT pro tabulku `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT pro tabulku `projections`
 --
 ALTER TABLE `projections`
-  MODIFY `projection_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `projection_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT pro tabulku `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT pro tabulku `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Omezení pro exportované tabulky
@@ -340,7 +350,7 @@ ALTER TABLE `projections`
 --
 ALTER TABLE `reservations`
   ADD CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`projection_id`) REFERENCES `projections` (`projection_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
