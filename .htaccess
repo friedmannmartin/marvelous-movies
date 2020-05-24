@@ -9,39 +9,41 @@ Options +FollowSymLinks
 RewriteEngine on
 
 # Error Pages
-    RewriteRule ^error/400            error-400.php                        [L,QSA]
-    RewriteRule ^error/401            error-401.php                        [L,QSA]
-    RewriteRule ^error/403            error-403.php                        [L,QSA]
-    RewriteRule ^error/404            error-404.php                        [L,QSA]
+    RewriteRule ^error/400            error-400.php                          [L,QSA]
+    RewriteRule ^error/401            error-401.php                          [L,QSA]
+    RewriteRule ^error/403            error-403.php                          [L,QSA]
+    RewriteRule ^error/404            error-404.php                          [L,QSA]
 
 # Authentication
-  # RewriteRule ^sign-in              sign-in.php                          [L,QSA]
-  # RewriteRule ^sign-up              sign-up.php                          [L,QSA]
-  # RewriteRule ^sign-out             sign-out.php                         [L,QSA]
-  # RewriteRule ^password-reset       password-reset.php                   [L,QSA]
-    RewriteRule ^password-reseted     password-reset.php?mailed=ok         [L,QSA]
-  # RewriteRule ^password-renew       password-renew.php                   [L,QSA]
+  # RewriteRule ^sign-in              sign-in.php                            [L,QSA]
+  # RewriteRule ^sign-up              sign-up.php                            [L,QSA]
+  # RewriteRule ^sign-out             sign-out.php                           [L,QSA]
+  # RewriteRule ^password-reset       password-reset.php                     [L,QSA]
+    RewriteRule ^password-reseted     password-reset.php?mailed=ok           [L,QSA]
+  # RewriteRule ^password-renew       password-renew.php                     [L,QSA]
 
 # Homepage
-    RewriteRule ^home                 index.php                            [L,QSA]
+    RewriteRule ^home                 index.php                              [L,QSA]
 
 # Projections
-    RewriteRule ^program/today        projections.php                      [L,QSA]
-    RewriteRule ^program/(.*)         projections.php?date=$1              [L,QSA]
-    RewriteRule ^projection/new       projection-edit.php                  [L,QSA]
-    RewriteRule ^projection/edit/(.*) projection-edit.php?projection_id=$1 [L,QSA]
+    RewriteRule ^program/today        projections.php                        [L,QSA]
+    RewriteRule ^program/(.*)         projections.php?date=$1                [L,QSA]
+    RewriteRule ^projection/new       projection-edit.php                    [L,QSA]
+    RewriteRule ^projection/edit/(.*) projection-edit.php?projection_id=$1   [L,QSA]
+    RewriteRule ^projection/(.*)      projection-detail.php?projection_id=$1 [L,QSA]
+
 
 # Movies
-  # RewriteRule ^movies               movies.php                           [L,QSA]
-    RewriteRule ^movie/new            movie-edit.php                       [L,QSA]
-    RewriteRule ^movie/edit/(.*)      movie-edit.php?movie_id=$1           [L,QSA]
-    RewriteRule ^movie/(.*)           movie-detail.php?url=$1              [L,QSA]
+  # RewriteRule ^movies               movies.php                             [L,QSA]
+    RewriteRule ^movie/new            movie-edit.php                         [L,QSA]
+    RewriteRule ^movie/edit/(.*)      movie-edit.php?movie_id=$1             [L,QSA]
+    RewriteRule ^movie/(.*)           movie-detail.php?url=$1                [L,QSA]
 
 # Reservations
-  # RewriteRule ^reservations         reservations.php                     [L,QSA]
+  # RewriteRule ^reservations         reservations.php                       [L,QSA]
   # TODO
 
 # Users
-  # RewriteRule ^users                users.php                            [L,QSA]
-    RewriteRule ^user/(.*)            user-detail.php?user_id=$1           [L,QSA]
-    RewriteRule ^settings             user-detail.php                      [L,QSA]
+  # RewriteRule ^users                users.php                              [L,QSA]
+    RewriteRule ^user/(.*)            user-detail.php?user_id=$1             [L,QSA]
+    RewriteRule ^settings             user-detail.php                        [L,QSA]
