@@ -39,7 +39,7 @@ RewriteEngine on
 
 # Reservations
   # RewriteRule ^reservations            reservations.php                                 [L,QSA]
-    RewriteRule ^reservation/add         reservation-edit.php?act=add&projection_id=$1    [L,QSA]
+    RewriteRule ^reservation/add/(.*)    reservation-edit.php?act=add&projection_id=$1    [L,QSA]
     RewriteRule ^reservation/remove/(.*) reservation-edit.php?act=remove&projection_id=$1 [L,QSA]
 
 # Users
