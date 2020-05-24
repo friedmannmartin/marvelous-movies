@@ -18,10 +18,20 @@
 
         /* $projection - Currently edited projection */
         $projection = $projectionQuery->fetch(PDO::FETCH_ASSOC);
+
+        /* $deleteLock - Prevention from deleting projection with existing reservations (true=locked, false=unlocked) */
+        $deleteLock = true;
+        $deleteLockQuery=$db->prepare('SELECT * FROM projections JOIN reservations USING (projection_id) WHERE projection_id=:projection_id');
+        $deleteLockQuery->execute([
+            ':projection_id'=>$projection['projection_id']
+        ]);
+        if(empty($deleteLockQuery->fetchAll(PDO::FETCH_ASSOC))){
+            $deleteLock = false;
+        }
     }
 
     /* Delete projection from database */
-    if(@$_POST['delete-projection']){
+    if(@$_POST['delete-projection'] && $deleteLock == false){
         $deleteProjectionQuery=$db->prepare('DELETE FROM projections WHERE projection_id=:projection_id LIMIT 1;');
         $deleteProjectionQuery->execute([
             ':projection_id'=>$_GET['projection_id']
@@ -158,7 +168,7 @@
         <?php if(!empty($_GET['projection_id'])): ?>
             <form method="post" class="d-inline">
                 <input type="hidden" name="delete-projection" value="true">
-                <input type="submit" class="btn btn-danger float-right" value="Delete projection">
+                <input type="submit" class="btn btn-danger float-right"  <?= ($deleteLock)? 'disabled' : '' ?> value="Delete projection">
             </form>
         <?php endif ?>
 

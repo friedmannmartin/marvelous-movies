@@ -18,10 +18,22 @@
 
         /* $movie - Currently edited movie */
         $movie = $movieQuery->fetch(PDO::FETCH_ASSOC);
+
+
+        /* $deleteLock - Prevention from deleting movie with scheduled projections (true=locked, false=unlocked) */
+        $deleteLock = true;
+        $deleteLockQuery=$db->prepare('SELECT * FROM movies JOIN projections USING (movie_id) WHERE movie_id=:movie_id');
+        $deleteLockQuery->execute([
+            ':movie_id'=>$movie['movie_id']
+        ]);
+        if(empty($deleteLockQuery->fetchAll(PDO::FETCH_ASSOC))){
+            $deleteLock = false;
+        }
     }
 
     /* Delete movie from database */
-    if(@$_POST['delete-movie']){
+    if(@$_POST['delete-movie'] && $deleteLock == false){
+
         $deleteMovieQuery=$db->prepare('DELETE FROM movies WHERE movie_id=:movie_id LIMIT 1;');
         $deleteMovieQuery->execute([
             ':movie_id'=>$_GET['movie_id']
@@ -29,6 +41,7 @@
 
         header('Location: ../../movies');
         exit();
+
     }
 
     /* If there is posted form try update/create movie */
@@ -152,11 +165,10 @@
 
 <main class="d-flex align-items-center">
     <div class="container-sm py-5">
-
         <?php if(!empty($_GET['movie_id'])): ?>
         <form method="post" class="d-inline">
             <input type="hidden" name="delete-movie" value="true">
-            <input type="submit" class="btn btn-danger float-right" value="Delete movie">
+            <input type="submit" class="btn btn-danger float-right"  <?= ($deleteLock)? 'disabled' : '' ?> value="Delete movie">
         </form>
         <?php endif ?>
 
