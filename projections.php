@@ -14,11 +14,10 @@
     $nextDay = clone($day);
     $nextDay->modify('+1 day');
 
-    $projectionTypesQuery=$db->prepare('SELECT movies.movie_id, name, url, language, subtittles, dimensions
+    $projectionTypesQuery=$db->prepare('SELECT DISTINCT movies.movie_id, name, url, language, subtittles, dimensions
                                         FROM projections
                                         JOIN movies ON movies.movie_id = projections.movie_id
-                                        WHERE datetime LIKE :date
-                                        GROUP BY movies.movie_id, name, url, language, subtittles, dimensions;');
+                                        WHERE datetime LIKE :date');
     $projectionTypesQuery->execute([
         ':date'=>$date.'%'
     ]);
@@ -80,14 +79,16 @@
                 </h5>
 
                 <?php
-                    $projectionsQuery=$db->prepare('SELECT *
+                    $projectionsQuery=$db->prepare('SELECT projections.projection_id, datetime, capacity, capacity - COUNT(reservations.reservation_id) AS freeCapacity
                                                             FROM projections
-                                                            JOIN movies ON movies.movie_id = projections.movie_id
+                                                            JOIN movies ON projections.movie_id = movies.movie_id
+                                                            LEFT JOIN reservations ON projections.projection_id = reservations.projection_id
                                                             WHERE datetime LIKE :date
                                                                 AND name=:name
                                                                 AND language=:language
                                                                 AND subtittles=:subtittles
                                                                 AND dimensions=:dimensions
+                                                            GROUP BY projections.projection_id, datetime, capacity
                                                             ORDER BY datetime;');
                         $projectionsQuery->execute([
                             ':date'=>$date.'%',
@@ -105,12 +106,22 @@
                             $time = new DateTime($projection['datetime']);
                             $now = new DateTime();
 
+                            if($projection['freeCapacity'] == 0){
+                                $capacity = 'Full capacity';
+                            } else{
+                                $capacity = 'Capacity: '.$projection['capacity'].'<br>Booked: '.$projection['freeCapacity'];
+                            }
+
                             if(!empty($authenticatedUser)):
                     ?>
 
                     <div class="btn-group">
                         <a href="./projection/<?= $projection['projection_id']?>"
-                           class="btn btn-outline-primary <?= ($time > $now)?: 'disabled" tabindex="-1" role="button" aria-disabled="true' ?>">
+                           data-toggle="tooltip"
+                           data-placement="bottom"
+                           data-html="true"
+                           title="<?= $capacity ?>"
+                           class="btn btn-outline-primary <?= ($time < $now || $projection['freeCapacity'] == '0')? 'disabled" tabindex="-1' : ''?>">
                             <?= $time->format('G:i');?>
                         </a>
                         <?php if(@$authenticatedUser['admin']): ?>
