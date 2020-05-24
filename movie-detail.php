@@ -33,7 +33,7 @@
         <?php endif ?>
 
         <h2 class="pb-3"><?= htmlspecialchars($movie['name']) ?></h2>
-        <div class="row">
+        <div class="row d-flex align-items-center">
             <div class="col-sm order-sm-2">
                 <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item"
