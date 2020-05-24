@@ -6,13 +6,13 @@
     /* Getting list of all users reservations */
     $reservationsQuery=$db->prepare('SELECT datetime, url, name, language, subtittles, dimensions, hall, reservations.projection_id, COUNT(reservation_id) AS booked_seats, free_capacity
                                         FROM reservations
-                                        JOIN projections ON reservations.projection_id = projections.projection_id
-                                        JOIN movies ON projections.movie_id = movies.movie_id
+                                        JOIN projections USING (projection_id)
+                                        JOIN movies USING (movie_id)
                                         JOIN (SELECT projections.projection_id, capacity - COUNT(reservation_id) AS free_capacity
                                                 FROM projections
-                                                JOIN reservations ON reservations.projection_id = projections.projection_id
+                                                JOIN reservations USING (projection_id)
                                                 GROUP BY reservations.projection_id) AS capacity_select
-                                            ON reservations.projection_id = capacity_select.projection_id
+                                            USING (projection_id)
                                         WHERE user_id=:user_id
                                         GROUP BY datetime, url, name, language, subtittles, dimensions, hall, projection_id;');
     $reservationsQuery->execute([

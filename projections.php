@@ -17,7 +17,7 @@
 
     $projectionTypesQuery=$db->prepare('SELECT DISTINCT movies.movie_id, name, url, language, subtittles, dimensions
                                         FROM projections
-                                        JOIN movies ON movies.movie_id = projections.movie_id
+                                        JOIN movies USING (movie_id)
                                         WHERE datetime LIKE :date');
     $projectionTypesQuery->execute([
         ':date'=>$date.'%'
@@ -89,8 +89,8 @@
                     /* Getting list of projection of certain type */
                     $projectionsQuery=$db->prepare('SELECT projections.projection_id, datetime, capacity, capacity - COUNT(reservations.reservation_id) AS freeCapacity
                                                             FROM projections
-                                                            JOIN movies ON projections.movie_id = movies.movie_id
-                                                            LEFT JOIN reservations ON projections.projection_id = reservations.projection_id
+                                                            JOIN movies USING (movie_id)
+                                                            LEFT JOIN reservations USING (projection_id)
                                                             WHERE datetime LIKE :date
                                                                 AND name=:name
                                                                 AND language=:language
