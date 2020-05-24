@@ -22,8 +22,8 @@
 
     /* Delete projection from database */
     if(@$_POST['delete-projection']){
-        $deleteMovieQuery=$db->prepare('DELETE FROM projections WHERE projection_id=:projection_id LIMIT 1;');
-        $deleteMovieQuery->execute([
+        $deleteProjectionQuery=$db->prepare('DELETE FROM projections WHERE projection_id=:projection_id LIMIT 1;');
+        $deleteProjectionQuery->execute([
             ':projection_id'=>$_GET['projection_id']
         ]);
 
