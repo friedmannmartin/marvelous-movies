@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: localhost
--- Vytvořeno: Pon 25. kvě 2020, 01:23
+-- Vytvořeno: Pon 25. kvě 2020, 21:41
 -- Verze serveru: 10.3.22-MariaDB-log
 -- Verze PHP: 7.3.16
 
@@ -50,37 +50,39 @@ CREATE TABLE `movies` (
   `description` text COLLATE utf8mb4_czech_ci NOT NULL,
   `length` int(11) NOT NULL,
   `trailer` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL,
-  `poster` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL
+  `poster` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL,
+  `last_updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci;
 
 --
 -- Vypisuji data pro tabulku `movies`
 --
 
-INSERT INTO `movies` (`movie_id`, `url`, `name`, `age_restriction`, `year`, `description`, `length`, `trailer`, `poster`) VALUES
-(1, 'iron-man', 'Iron Man', 'PG-13', 2008, '2008\'s Iron Man tells the story of Tony Stark, a billionaire industrialist and genius inventor who is kidnapped and forced to build a devastating weapon. Instead, using his intelligence and ingenuity, Tony builds a high-tech suit of armor and escapes captivity. When he uncovers a nefarious plot with global implications, he dons his powerful armor and vows to protect the world as Iron Man.', 126, '8ugaeA-nMTc', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ironman_lob_crd_01_4.jpg'),
-(2, 'the-incredible-hulk', 'The Incredible Hulk', 'PG-13', 2008, 'In this new beginning, scientist Bruce Banner desperately hunts for a cure to the gamma radiation that poisoned his cells and unleashes the unbridled force of rage within him: The Hulk. Living in the shadows--cut off from a life he knew and the woman he loves, Betty Ross--Banner struggles to avoid the obsessive pursuit of his nemesis, General Thunderbolt Ross and the military machinery that seeks to capture him and brutally exploit his power. As all three grapple with the secrets that led to the Hulk\'s creation, they are confronted with a monstrous new adversary known as the Abomination, whose destructive strength exceeds even the Hulk\'s own. One scientist must make an agonizing final choice: accept a peaceful life as Bruce Banner or find heroism in the creature he holds inside--The Incredible Hulk.', 112, 'xbqNb2PFKKA', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/theincrediblehulk_lob_crd_01_3.jpg'),
-(3, 'iron-man-2', 'Iron Man 2', 'PG-13', 2010, 'With the world now aware that he is Iron Man, billionaire inventor Tony Stark faces pressure from all sides to share his technology with the military. He is reluctant to divulge the secrets of his armored suit, fearing the information will fall into the wrong hands. With Pepper Potts and \"Rhodey\" Rhodes by his side, Tony must forge new alliances and confront a powerful new enemy.', 124, 'qsRZghNciIo', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ironman2_lob_crd_01_4.jpg'),
-(4, 'thor', 'Thor', 'PG-13', 2011, 'As the son of Odin, king of the Norse gods, Thor will soon inherit the throne of Asgard from his aging father. However, on the day that he is to be crowned, Thor reacts with brutality when the gods\' enemies, the Frost Giants, enter the palace in violation of their treaty. As punishment, Odin banishes Thor to Earth. While Loki, Thor\'s brother, plots mischief in Asgard, Thor, now stripped of his powers, faces his greatest threat.', 115, 'w1k59SJ_-Uo', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/thor_lob_crd_01_1.jpg'),
-(5, 'captain-america:-the-first-avenger', 'Captain America: The First Avenger', 'PG-13', 2011, 'Marvel\'s \"Captain America: The First Avenger\" focuses on the early days of the Marvel Universe when Steve Rogers volunteers to participate in an experimental program that turns him into the Super Soldier known as Captain America.', 124, 'qi5UTD7kEr0', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/captainamericathefirstavenger_lob_crd_01_0.jpg'),
-(6, 'the-avengers', 'The Avengers', 'PG-13', 2012, 'Marvel Studios presents in association with Paramount Pictures \"Marvel\'s The Avengers\"--the super hero team up of a lifetime, featuring iconic Marvel super heroes Iron Man, the Incredible Hulk, Thor, Captain America, Hawkeye and Black Widow. When an unexpected enemy emerges that threatens global safety and security, Nick Fury, Director of the international peacekeeping agency known as S.H.I.E.L.D., finds himself in need of a team to pull the world back from the brink of disaster. Spanning the globe, a daring recruitment effort begins.', 143, 'sXT4uBpGxNY', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/theavengers_lob_crd_03_0.jpg'),
-(7, 'iron-man-3', 'Iron Man 3', 'PG-13', 2013, 'Marvel\'s \"Iron Man 3\" pits brash-but-brilliant industrialist Tony Stark/Iron Man against an enemy whose reach knows no bounds. When Stark finds his personal world destroyed at his enemy\'s hands, he embarks on a harrowing quest to find those responsible. This journey, at every turn, will test his mettle. With his back against the wall, Stark is left to survive by his own devices, relying on his ingenuity and instincts to protect those closest to him. As he fights his way back, Stark discovers the answer to the question that has secretly haunted him: does the man make the suit or does the suit make the man', 130, 'aV8H7kszXqo', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ironman3_lob_crd_01_11.jpg'),
-(8, 'thor:-the-darl-world', 'Thor: The Dark World', 'PG-13', 2013, 'In the aftermath of Marvel\'s \"Thor\" and \"Marvel\'s The Avengers,\" Thor fights to restore order across the cosmos...but an ancient race led by the vengeful Malekith returns to plunge the universe back into darkness. Faced with an enemy that even Odin and Asgard cannot withstand, Thor must embark on his most perilous and personal journey yet, one that will reunite him with Jane Foster and force him to sacrifice everything to save us all.', 112, 'vXxw3KkAJlI', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/thorthedarkworld_lob_crd_02.jpg'),
-(9, 'captain-america:-the-winter-soldier', 'Captain America: The Winter Soldier', 'PG-13', 2014, 'After the cataclysmic events in New York with The Avengers, Marvel\'s \"Captain America: The Winter Soldier,\" finds Steve Rogers, aka Captain America, living quietly in Washington, D.C. and trying to adjust to the modern world. But when a S.H.I.E.L.D. colleague comes under attack, Steve becomes embroiled in a web of intrigue that threatens to put the world at risk. Joining forces with the Black Widow, Captain America struggles to expose the ever-widening conspiracy while fighting off professional assassins sent to silence him at every turn. When the full scope of the villainous plot is revealed, Captain America and the Black Widow enlist the help of a new ally, the Falcon. However, they soon find themselves up against an unexpected and formidable enemy--the Winter Soldier.', 136, 'Zmd6qLxMlQA', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/captainamericathewintersoldier_lob_crd_01_2.jpg'),
-(10, 'guardians-of-the-galaxy', 'Guardians of the Galaxy', 'PG-13', 2014, 'An action-packed, epic space adventure, Marvel\'s \"Guardians of the Galaxy,\" expands the Marvel Cinematic Universe into the cosmos, where brash adventurer Peter Quill finds himself the object of an unrelenting bounty hunt after stealing a mysterious orb coveted by Ronan, a powerful villain with ambitions that threaten the entire universe. To evade the ever-persistent Ronan, Quill is forced into an uneasy truce with a quartet of disparate misfits--Rocket, a gun-toting raccoon; Groot, a tree-like humanoid; the deadly and enigmatic Gamora; and the revenge-driven Drax the Destroyer. But when Quill discovers the true power of the orb and the menace it poses to the cosmos, he must do his best to rally his ragtag rivals for a last, desperate stand--with the galaxy\'s fate in the balance.', 121, '2XltzyLcu0g', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/guardiansofthegalaxy_lob_crd_03_0.jpg'),
-(11, 'avengers:-age-of-ultron', 'Avengers: Age of Ultron', 'PG-13', 2015, 'Marvel Studios presents “Avengers: Age of Ultron,” the epic follow-up to the biggest Super Hero movie of all time. When Tony Stark tries to jumpstart a dormant peacekeeping program, things go awry and Earth’s Mightiest Heroes, including Iron Man, Captain America, Thor, The Incredible Hulk, Black Widow and Hawkeye, are put to the ultimate test as the fate of the planet hangs in the balance. As the villainous Ultron emerges, it is up to the Avengers to stop him from enacting his terrible plans, and soon uneasy alliances and unexpected action pave the way for an epic and unique global adventure.', 141, 'u1OKBqHICMQ', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersageofultron_lob_crd_03_0.jpg'),
-(12, 'ant-man', 'Ant-Man', 'PG-13', 2015, 'The next evolution of the Marvel Cinematic Universe brings a founding member of The Avengers to the big screen for the first time with Marvel Studios\' \"Ant-Man.\" Armed with the astonishing ability to shrink in scale but increase in strength, master thief Scott Lang must embrace his inner-hero and help his mentor, Doctor Hank Pym, protect the secret behind his spectacular Ant-Man suit from a new generation of towering threats. Against seemingly insurmountable obstacles, Pym and Lang must plan and pull off a heist that will save the world.', 117, 'QfOZWGLT1JM', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ant-man_lob_crd_01_9.jpg'),
-(13, 'captain-america:-civil-war', 'Captain America: Civil War', 'PG-13', 2016, 'Marvel’s “Captain America: Civil War” finds Steve Rogers leading the newly formed team of Avengers in their continued efforts to safeguard humanity. But after another incident involving the Avengers results in collateral damage, political pressure mounts to install a system of accountability, headed by a governing body to oversee and direct the team. The new status quo fractures the Avengers, resulting in two camps—one led by Steve Rogers and his desire for the Avengers to remain free to defend humanity without government interference, and the other following Tony Stark’s surprising decision to support government oversight and accountability.', 147, 'FkTybqcX-Yo', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/captainamericacivilwar_lob_crd_01_10.jpg'),
-(14, 'doctor-strange', 'Doctor Strange', 'PG-13', 2016, 'From Marvel Studios comes “Doctor Strange,” the story of world-famous neurosurgeon Dr. Stephen Strange whose life changes forever after a horrific car accident robs him of the use of his hands. When traditional medicine fails him, he is forced to look for healing, and hope, in an unlikely place—a mysterious enclave known as Kamar-Taj. Before long Strange—armed with newly acquired magical powers—is forced to choose whether to return to his life of fortune and status or leave it all behind to defend the world as the most powerful sorcerer in existence.', 115, 'h7gvFravm4A', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/doctorstrange_lob_crd_01_7.jpg'),
-(15, 'guardians-of-the-galaxy:-vol.-2', 'Guardians of the Galaxy: Vol. 2', 'PG-13', 2017, 'Set to the backdrop of ‘Awesome Mixtape #2,’ Marvel’s Guardians of the Galaxy Vol. 2 continues the team’s adventures as they traverse the outer reaches of the cosmos. The Guardians must fight to keep their newfound family together as they unravel the mysteries of Peter Quill’s true parentage. Old foes become new allies and fan-favorite characters from the classic comics will come to our heroes’ aid as the Marvel cinematic universe continues to expand.', 136, 'pr7tDrwQ3t8', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/guardiansofthegalaxyvol.2_lob_crd_01_0.jpg'),
-(16, 'spider-man:-momecoming', 'Spider-Man: Homecoming', 'PG-13', 2017, 'A young Peter Parker/Spider-Man (Tom Holland), who made his sensational debut in Captain America: Civil War, begins to navigate his newfound identity as the web-slinging super hero in Spider-Man: Homecoming. Thrilled by his experience with the Avengers, Peter returns home, where he lives with his Aunt May (Marisa Tomei), under the watchful eye of his new mentor Tony Stark (Robert Downey, Jr.). Peter tries to fall back into his normal daily routine – distracted by thoughts of proving himself to be more than just your friendly neighborhood Spider-Man – but when the Vulture (Michael Keaton) emerges as a new villain, everything that Peter holds most important will be threatened.', 133, 'n9DwoQ7HWvI', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/spider-manhomecoming_lob_crd_01_4.jpg'),
-(17, 'thor:-ragnarok', 'Thor: Ragnarok', 'PG-13', 2017, 'Thor is imprisoned on the other side of the universe without his mighty hammer and finds himself in a race against time to get back to Asgard to stop Ragnarok—the destruction of his homeworld and the end of Asgardian civilization—at the hands of an all-powerful new threat, the ruthless Hela. But first he must survive a deadly gladiatorial contest that pits him against his former ally and fellow Avenger—the Incredible Hulk!', 130, 'e5HP-iUvlC4', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/thorragnarok_lob_crd_03_0.jpg'),
-(18, 'black-panther', 'Black Panther', 'PG-13', 2018, 'Marvel Studios’ “Black Panther” follows T’Challa who, after the death of his father, the King of Wakanda, returns home to the isolated, technologically advanced African nation to succeed to the throne and take his rightful place as king. But when a powerful old enemy reappears, T’Challa’s mettle as king—and Black Panther—is tested when he is drawn into a formidable conflict that puts the fate of Wakanda and the entire world at risk. Faced with treachery and danger, the young king must rally his allies and release the full power of Black Panther to defeat his foes and secure the safety of his people and their way of life.', 134, 'oHLU3T-e2t4', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/blackpanther_lob_crd_01_5.jpg'),
-(19, 'avengers:-infinity-war', 'Avengers: Infinity War', 'PG-13', 2018, 'An unprecedented cinematic journey ten years in the making and spanning the entire Marvel Cinematic Universe, Marvel Studios\' \"Avengers: Infinity War\" brings to the screen the ultimate, deadliest showdown of all time. As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.\r\n', 149, 'B65hW9YYY5A', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersinfinitywar_lob_crd_02.jpg'),
-(20, 'ant-man-and-the-wasp', 'Ant-Man and the Wasp', 'PG-13', 2018, 'From the Marvel Cinematic Universe comes a new chapter featuring heroes with the astonishing ability to shrink: “Ant-Man and The Wasp.” In the aftermath of “Captain America: Civil War,” Scott Lang (Paul Rudd) grapples with the consequences of his choices as both a Super Hero and a father. As he struggles to rebalance his home life with his responsibilities as Ant-Man, he’s confronted by Hope van Dyne (Evangeline Lilly) and Dr. Hank Pym (Michael Douglas) with an urgent new mission. Scott must once again put on the suit and learn to fight alongside The Wasp as the team works together to uncover secrets from their past.', 118, 'fmrdsRdYZlg', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ant-manthewasp_lob_crd_01_0.jpg'),
-(21, 'captain-marvel', 'Captain Marvel', 'PG-13', 2019, 'Set in the 1990s, Marvel Studios\' \"Captain Marvel\" is an all-new adventure from a previously unseen period in the history of the Marvel Cinematic Universe that follows the journey of Carol Danvers as she becomes one of the universe\'s most powerful heroes. While a galactic war between two alien races reaches Earth, Danvers finds herself and a small cadre of allies at the center of the maelstrom.', 125, '0UUeH8DF8uA', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/captainmarvel_lob_crd_06.jpg'),
-(22, 'avengers:-endgame', 'Avengers: Endgame', 'PG-13', 2019, 'The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios\' grand conclusion to twenty-two films, \"Avengers: Endgame.\"', 182, 'ee1172yeqyE', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersendgame_lob_crd_05.jpg'),
-(23, 'spider-man:-far-from-home', 'Spider-Man: Far From Home', 'PG-13', 2019, 'Following the events of Avengers: Endgame, Spider-Man must step up to take on new threats in a world that has changed forever.', 129, 'Nt9L1jCKGnE', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/spider-manfarfromhome_lob_crd_04_0.jpg');
+INSERT INTO `movies` (`movie_id`, `url`, `name`, `age_restriction`, `year`, `description`, `length`, `trailer`, `poster`, `last_updated_at`) VALUES
+(1, 'iron-man', 'Iron Man', 'PG-13', 2008, '2008\'s Iron Man tells the story of Tony Stark, a billionaire industrialist and genius inventor who is kidnapped and forced to build a devastating weapon. Instead, using his intelligence and ingenuity, Tony builds a high-tech suit of armor and escapes captivity. When he uncovers a nefarious plot with global implications, he dons his powerful armor and vows to protect the world as Iron Man.', 126, '8ugaeA-nMTc', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ironman_lob_crd_01_4.jpg', '2020-05-25 19:34:09'),
+(2, 'the-incredible-hulk', 'The Incredible Hulk', 'PG-13', 2008, 'In this new beginning, scientist Bruce Banner desperately hunts for a cure to the gamma radiation that poisoned his cells and unleashes the unbridled force of rage within him: The Hulk. Living in the shadows--cut off from a life he knew and the woman he loves, Betty Ross--Banner struggles to avoid the obsessive pursuit of his nemesis, General Thunderbolt Ross and the military machinery that seeks to capture him and brutally exploit his power. As all three grapple with the secrets that led to the Hulk\'s creation, they are confronted with a monstrous new adversary known as the Abomination, whose destructive strength exceeds even the Hulk\'s own. One scientist must make an agonizing final choice: accept a peaceful life as Bruce Banner or find heroism in the creature he holds inside--The Incredible Hulk.', 112, 'xbqNb2PFKKA', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/theincrediblehulk_lob_crd_01_3.jpg', '2020-05-25 19:34:09'),
+(3, 'iron-man-2', 'Iron Man 2', 'PG-13', 2010, 'With the world now aware that he is Iron Man, billionaire inventor Tony Stark faces pressure from all sides to share his technology with the military. He is reluctant to divulge the secrets of his armored suit, fearing the information will fall into the wrong hands. With Pepper Potts and \"Rhodey\" Rhodes by his side, Tony must forge new alliances and confront a powerful new enemy.', 124, 'qsRZghNciIo', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ironman2_lob_crd_01_4.jpg', '2020-05-25 19:34:09'),
+(4, 'thor', 'Thor', 'PG-13', 2011, 'As the son of Odin, king of the Norse gods, Thor will soon inherit the throne of Asgard from his aging father. However, on the day that he is to be crowned, Thor reacts with brutality when the gods\' enemies, the Frost Giants, enter the palace in violation of their treaty. As punishment, Odin banishes Thor to Earth. While Loki, Thor\'s brother, plots mischief in Asgard, Thor, now stripped of his powers, faces his greatest threat.', 115, 'w1k59SJ_-Uo', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/thor_lob_crd_01_1.jpg', '2020-05-25 19:34:09'),
+(5, 'captain-america:-the-first-avenger', 'Captain America: The First Avenger', 'PG-13', 2011, 'Marvel\'s \"Captain America: The First Avenger\" focuses on the early days of the Marvel Universe when Steve Rogers volunteers to participate in an experimental program that turns him into the Super Soldier known as Captain America.', 124, 'qi5UTD7kEr0', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/captainamericathefirstavenger_lob_crd_01_0.jpg', '2020-05-25 19:34:09'),
+(6, 'the-avengers', 'The Avengers', 'PG-13', 2012, 'Marvel Studios presents in association with Paramount Pictures \"Marvel\'s The Avengers\"--the super hero team up of a lifetime, featuring iconic Marvel super heroes Iron Man, the Incredible Hulk, Thor, Captain America, Hawkeye and Black Widow. When an unexpected enemy emerges that threatens global safety and security, Nick Fury, Director of the international peacekeeping agency known as S.H.I.E.L.D., finds himself in need of a team to pull the world back from the brink of disaster. Spanning the globe, a daring recruitment effort begins.', 143, 'sXT4uBpGxNY', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/theavengers_lob_crd_03_0.jpg', '2020-05-25 19:34:09'),
+(7, 'iron-man-3', 'Iron Man 3', 'PG-13', 2013, 'Marvel\'s \"Iron Man 3\" pits brash-but-brilliant industrialist Tony Stark/Iron Man against an enemy whose reach knows no bounds. When Stark finds his personal world destroyed at his enemy\'s hands, he embarks on a harrowing quest to find those responsible. This journey, at every turn, will test his mettle. With his back against the wall, Stark is left to survive by his own devices, relying on his ingenuity and instincts to protect those closest to him. As he fights his way back, Stark discovers the answer to the question that has secretly haunted him: does the man make the suit or does the suit make the man', 130, 'aV8H7kszXqo', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ironman3_lob_crd_01_11.jpg', '2020-05-25 19:34:09'),
+(8, 'thor:-the-darl-world', 'Thor: The Dark World', 'PG-13', 2013, 'In the aftermath of Marvel\'s \"Thor\" and \"Marvel\'s The Avengers,\" Thor fights to restore order across the cosmos...but an ancient race led by the vengeful Malekith returns to plunge the universe back into darkness. Faced with an enemy that even Odin and Asgard cannot withstand, Thor must embark on his most perilous and personal journey yet, one that will reunite him with Jane Foster and force him to sacrifice everything to save us all.', 112, 'vXxw3KkAJlI', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/thorthedarkworld_lob_crd_02.jpg', '2020-05-25 19:34:09'),
+(9, 'captain-america:-the-winter-soldier', 'Captain America: The Winter Soldier', 'PG-13', 2014, 'After the cataclysmic events in New York with The Avengers, Marvel\'s \"Captain America: The Winter Soldier,\" finds Steve Rogers, aka Captain America, living quietly in Washington, D.C. and trying to adjust to the modern world. But when a S.H.I.E.L.D. colleague comes under attack, Steve becomes embroiled in a web of intrigue that threatens to put the world at risk. Joining forces with the Black Widow, Captain America struggles to expose the ever-widening conspiracy while fighting off professional assassins sent to silence him at every turn. When the full scope of the villainous plot is revealed, Captain America and the Black Widow enlist the help of a new ally, the Falcon. However, they soon find themselves up against an unexpected and formidable enemy--the Winter Soldier.', 136, 'Zmd6qLxMlQA', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/captainamericathewintersoldier_lob_crd_01_2.jpg', '2020-05-25 19:34:09'),
+(10, 'guardians-of-the-galaxy', 'Guardians of the Galaxy', 'PG-13', 2014, 'An action-packed, epic space adventure, Marvel\'s \"Guardians of the Galaxy,\" expands the Marvel Cinematic Universe into the cosmos, where brash adventurer Peter Quill finds himself the object of an unrelenting bounty hunt after stealing a mysterious orb coveted by Ronan, a powerful villain with ambitions that threaten the entire universe. To evade the ever-persistent Ronan, Quill is forced into an uneasy truce with a quartet of disparate misfits--Rocket, a gun-toting raccoon; Groot, a tree-like humanoid; the deadly and enigmatic Gamora; and the revenge-driven Drax the Destroyer. But when Quill discovers the true power of the orb and the menace it poses to the cosmos, he must do his best to rally his ragtag rivals for a last, desperate stand--with the galaxy\'s fate in the balance.', 121, '2XltzyLcu0g', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/guardiansofthegalaxy_lob_crd_03_0.jpg', '2020-05-25 19:34:09'),
+(11, 'avengers:-age-of-ultron', 'Avengers: Age of Ultron', 'PG-13', 2015, 'Marvel Studios presents “Avengers: Age of Ultron,” the epic follow-up to the biggest Super Hero movie of all time. When Tony Stark tries to jumpstart a dormant peacekeeping program, things go awry and Earth’s Mightiest Heroes, including Iron Man, Captain America, Thor, The Incredible Hulk, Black Widow and Hawkeye, are put to the ultimate test as the fate of the planet hangs in the balance. As the villainous Ultron emerges, it is up to the Avengers to stop him from enacting his terrible plans, and soon uneasy alliances and unexpected action pave the way for an epic and unique global adventure.', 141, 'u1OKBqHICMQ', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersageofultron_lob_crd_03_0.jpg', '2020-05-25 19:34:09'),
+(12, 'ant-man', 'Ant-Man', 'PG-13', 2015, 'The next evolution of the Marvel Cinematic Universe brings a founding member of The Avengers to the big screen for the first time with Marvel Studios\' \"Ant-Man.\" Armed with the astonishing ability to shrink in scale but increase in strength, master thief Scott Lang must embrace his inner-hero and help his mentor, Doctor Hank Pym, protect the secret behind his spectacular Ant-Man suit from a new generation of towering threats. Against seemingly insurmountable obstacles, Pym and Lang must plan and pull off a heist that will save the world.', 117, 'QfOZWGLT1JM', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ant-man_lob_crd_01_9.jpg', '2020-05-25 19:34:09'),
+(13, 'captain-america:-civil-war', 'Captain America: Civil War', 'PG-13', 2016, 'Marvel’s “Captain America: Civil War” finds Steve Rogers leading the newly formed team of Avengers in their continued efforts to safeguard humanity. But after another incident involving the Avengers results in collateral damage, political pressure mounts to install a system of accountability, headed by a governing body to oversee and direct the team. The new status quo fractures the Avengers, resulting in two camps—one led by Steve Rogers and his desire for the Avengers to remain free to defend humanity without government interference, and the other following Tony Stark’s surprising decision to support government oversight and accountability.', 147, 'FkTybqcX-Yo', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/captainamericacivilwar_lob_crd_01_10.jpg', '2020-05-25 19:34:09'),
+(14, 'doctor-strange', 'Doctor Strange', 'PG-13', 2016, 'From Marvel Studios comes “Doctor Strange,” the story of world-famous neurosurgeon Dr. Stephen Strange whose life changes forever after a horrific car accident robs him of the use of his hands. When traditional medicine fails him, he is forced to look for healing, and hope, in an unlikely place—a mysterious enclave known as Kamar-Taj. Before long Strange—armed with newly acquired magical powers—is forced to choose whether to return to his life of fortune and status or leave it all behind to defend the world as the most powerful sorcerer in existence.', 115, 'h7gvFravm4A', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/doctorstrange_lob_crd_01_7.jpg', '2020-05-25 19:34:09'),
+(15, 'guardians-of-the-galaxy:-vol.-2', 'Guardians of the Galaxy: Vol. 2', 'PG-13', 2017, 'Set to the backdrop of ‘Awesome Mixtape #2,’ Marvel’s Guardians of the Galaxy Vol. 2 continues the team’s adventures as they traverse the outer reaches of the cosmos. The Guardians must fight to keep their newfound family together as they unravel the mysteries of Peter Quill’s true parentage. Old foes become new allies and fan-favorite characters from the classic comics will come to our heroes’ aid as the Marvel cinematic universe continues to expand.', 136, 'pr7tDrwQ3t8', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/guardiansofthegalaxyvol.2_lob_crd_01_0.jpg', '2020-05-25 19:34:09'),
+(16, 'spider-man:-momecoming', 'Spider-Man: Homecoming', 'PG-13', 2017, 'A young Peter Parker/Spider-Man (Tom Holland), who made his sensational debut in Captain America: Civil War, begins to navigate his newfound identity as the web-slinging super hero in Spider-Man: Homecoming. Thrilled by his experience with the Avengers, Peter returns home, where he lives with his Aunt May (Marisa Tomei), under the watchful eye of his new mentor Tony Stark (Robert Downey, Jr.). Peter tries to fall back into his normal daily routine – distracted by thoughts of proving himself to be more than just your friendly neighborhood Spider-Man – but when the Vulture (Michael Keaton) emerges as a new villain, everything that Peter holds most important will be threatened.', 133, 'n9DwoQ7HWvI', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/spider-manhomecoming_lob_crd_01_4.jpg', '2020-05-25 19:34:09'),
+(17, 'thor:-ragnarok', 'Thor: Ragnarok', 'PG-13', 2017, 'Thor is imprisoned on the other side of the universe without his mighty hammer and finds himself in a race against time to get back to Asgard to stop Ragnarok—the destruction of his homeworld and the end of Asgardian civilization—at the hands of an all-powerful new threat, the ruthless Hela. But first he must survive a deadly gladiatorial contest that pits him against his former ally and fellow Avenger—the Incredible Hulk!', 130, 'e5HP-iUvlC4', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/thorragnarok_lob_crd_03_0.jpg', '2020-05-25 19:34:09'),
+(18, 'black-panther', 'Black Panther', 'PG-13', 2018, 'Marvel Studios’ “Black Panther” follows T’Challa who, after the death of his father, the King of Wakanda, returns home to the isolated, technologically advanced African nation to succeed to the throne and take his rightful place as king. But when a powerful old enemy reappears, T’Challa’s mettle as king—and Black Panther—is tested when he is drawn into a formidable conflict that puts the fate of Wakanda and the entire world at risk. Faced with treachery and danger, the young king must rally his allies and release the full power of Black Panther to defeat his foes and secure the safety of his people and their way of life.', 134, 'oHLU3T-e2t4', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/blackpanther_lob_crd_01_5.jpg', '2020-05-25 19:34:09'),
+(19, 'avengers:-infinity-war', 'Avengers: Infinity War', 'PG-13', 2018, 'An unprecedented cinematic journey ten years in the making and spanning the entire Marvel Cinematic Universe, Marvel Studios\' \"Avengers: Infinity War\" brings to the screen the ultimate, deadliest showdown of all time. As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.\r\n', 149, 'B65hW9YYY5A', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersinfinitywar_lob_crd_02.jpg', '2020-05-25 19:34:09'),
+(20, 'ant-man-and-the-wasp', 'Ant-Man and the Wasp', 'PG-13', 2018, 'From the Marvel Cinematic Universe comes a new chapter featuring heroes with the astonishing ability to shrink: “Ant-Man and The Wasp.” In the aftermath of “Captain America: Civil War,” Scott Lang (Paul Rudd) grapples with the consequences of his choices as both a Super Hero and a father. As he struggles to rebalance his home life with his responsibilities as Ant-Man, he’s confronted by Hope van Dyne (Evangeline Lilly) and Dr. Hank Pym (Michael Douglas) with an urgent new mission. Scott must once again put on the suit and learn to fight alongside The Wasp as the team works together to uncover secrets from their past.', 118, 'fmrdsRdYZlg', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ant-manthewasp_lob_crd_01_0.jpg', '2020-05-25 19:34:09'),
+(21, 'captain-marvel', 'Captain Marvel', 'PG-13', 2019, 'Set in the 1990s, Marvel Studios\' \"Captain Marvel\" is an all-new adventure from a previously unseen period in the history of the Marvel Cinematic Universe that follows the journey of Carol Danvers as she becomes one of the universe\'s most powerful heroes. While a galactic war between two alien races reaches Earth, Danvers finds herself and a small cadre of allies at the center of the maelstrom.', 125, '0UUeH8DF8uA', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/captainmarvel_lob_crd_06.jpg', '2020-05-25 19:34:09'),
+(22, 'avengers:-endgame', 'Avengers: Endgame', 'PG-13', 2019, 'The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios\' grand conclusion to twenty-two films, \"Avengers: Endgame.\"', 182, 'ee1172yeqyE', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersendgame_lob_crd_05.jpg', '2020-05-25 19:34:09'),
+(23, 'spider-man:-far-from-home', 'Spider-Man: Far From Home', 'PG-13', 2019, 'Following the events of Avengers: Endgame, Spider-Man must step up to take on new threats in a world that has changed forever.', 129, 'Nt9L1jCKGnE', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/spider-manfarfromhome_lob_crd_04_0.jpg', '2020-05-25 19:34:09'),
+(30, 'test-8', 'TEST 8', 'NC-17', 1970, 'fdasfadfa', 1, 'fadfadf', 'https://user-images.githubusercontent.com/17927954/36488183-85ff8ab4-172b-11e8-84f9-1f1a28030da6.gif', '2020-05-25 19:34:09');
 
 -- --------------------------------------------------------
 
@@ -96,110 +98,112 @@ CREATE TABLE `projections` (
   `subtittles` varchar(50) COLLATE utf8mb4_czech_ci DEFAULT NULL,
   `dimensions` char(2) COLLATE utf8mb4_czech_ci NOT NULL,
   `capacity` int(11) NOT NULL,
-  `hall` varchar(50) COLLATE utf8mb4_czech_ci NOT NULL
+  `hall` varchar(50) COLLATE utf8mb4_czech_ci NOT NULL,
+  `last_updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci;
 
 --
 -- Vypisuji data pro tabulku `projections`
 --
 
-INSERT INTO `projections` (`projection_id`, `movie_id`, `datetime`, `language`, `subtittles`, `dimensions`, `capacity`, `hall`) VALUES
-(1, 1, '2020-05-27 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(2, 1, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 2, 'Main'),
-(3, 1, '2020-05-27 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
-(4, 1, '2020-05-27 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
-(5, 1, '2020-05-27 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(6, 1, '2020-05-27 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
-(7, 1, '2020-05-27 18:00:00', 'CZ', '', '3D', 50, 'Main'),
-(8, 1, '2020-05-27 14:00:00', 'CZ', '', '3D', 50, 'Main'),
-(9, 1, '2020-05-27 11:30:00', 'CZ', '', '3D', 50, 'Main'),
-(10, 1, '2020-05-27 20:10:00', 'CZ', '', '3D', 50, 'Main'),
-(11, 1, '2020-05-27 12:00:00', 'CZ', '', '3D', 50, 'Main'),
-(12, 1, '2020-05-27 17:40:00', 'CZ', '', '3D', 50, 'Main'),
-(13, 1, '2020-05-28 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(14, 1, '2020-05-28 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(15, 1, '2020-05-28 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
-(16, 1, '2020-05-28 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
-(17, 1, '2020-05-28 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(18, 1, '2020-05-28 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
-(19, 1, '2020-05-28 18:00:00', 'CZ', '', '3D', 50, 'Main'),
-(20, 1, '2020-05-28 14:00:00', 'CZ', '', '3D', 50, 'Main'),
-(21, 1, '2020-05-28 11:30:00', 'CZ', '', '3D', 50, 'Main'),
-(22, 1, '2020-05-28 20:10:00', 'CZ', '', '3D', 50, 'Main'),
-(23, 1, '2020-05-28 12:00:00', 'CZ', '', '3D', 50, 'Main'),
-(24, 1, '2020-05-28 17:40:00', 'CZ', '', '3D', 50, 'Main'),
-(25, 8, '2020-05-27 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(26, 8, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(27, 8, '2020-05-27 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
-(28, 8, '2020-05-27 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
-(29, 8, '2020-05-27 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(30, 8, '2020-05-27 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
-(31, 8, '2020-05-27 18:00:00', 'CZ', '', '3D', 50, 'Main'),
-(32, 8, '2020-05-27 14:00:00', 'CZ', '', '3D', 50, 'Main'),
-(33, 8, '2020-05-27 11:30:00', 'CZ', '', '3D', 50, 'Main'),
-(34, 8, '2020-05-27 20:10:00', 'CZ', '', '3D', 50, 'Main'),
-(35, 8, '2020-05-27 12:00:00', 'CZ', '', '3D', 50, 'Main'),
-(36, 8, '2020-05-27 17:40:00', 'CZ', '', '3D', 50, 'Main'),
-(37, 8, '2020-05-28 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(38, 8, '2020-05-28 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(39, 8, '2020-05-28 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
-(40, 8, '2020-05-28 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
-(41, 8, '2020-05-28 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(42, 8, '2020-05-28 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
-(43, 8, '2020-05-28 18:00:00', 'CZ', '', '3D', 50, 'Main'),
-(44, 8, '2020-05-28 14:00:00', 'CZ', '', '3D', 50, 'Main'),
-(45, 8, '2020-05-28 11:30:00', 'CZ', '', '3D', 50, 'Main'),
-(46, 8, '2020-05-28 20:10:00', 'CZ', '', '3D', 50, 'Main'),
-(47, 8, '2020-05-28 12:00:00', 'CZ', '', '3D', 50, 'Main'),
-(48, 8, '2020-05-28 17:40:00', 'CZ', '', '3D', 50, 'Main'),
-(49, 20, '2020-05-27 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(50, 20, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(51, 20, '2020-05-27 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
-(52, 20, '2020-05-27 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
-(53, 20, '2020-05-27 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(54, 20, '2020-05-27 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
-(55, 20, '2020-05-27 18:00:00', 'CZ', '', '3D', 50, 'Main'),
-(56, 20, '2020-05-27 14:00:00', 'CZ', '', '3D', 50, 'Main'),
-(57, 20, '2020-05-27 11:30:00', 'CZ', '', '3D', 50, 'Main'),
-(58, 20, '2020-05-27 20:10:00', 'CZ', '', '3D', 50, 'Main'),
-(59, 20, '2020-05-27 12:00:00', 'CZ', '', '3D', 50, 'Main'),
-(60, 20, '2020-05-27 17:40:00', 'CZ', '', '3D', 50, 'Main'),
-(61, 20, '2020-05-28 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(62, 20, '2020-05-28 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(63, 20, '2020-05-28 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
-(64, 20, '2020-05-28 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
-(65, 20, '2020-05-28 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(66, 20, '2020-05-28 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
-(67, 20, '2020-05-28 18:00:00', 'CZ', '', '3D', 50, 'Main'),
-(68, 20, '2020-05-28 14:00:00', 'CZ', '', '3D', 50, 'Main'),
-(69, 20, '2020-05-28 11:30:00', 'CZ', '', '3D', 50, 'Main'),
-(70, 20, '2020-05-28 20:10:00', 'CZ', '', '3D', 50, 'Main'),
-(71, 20, '2020-05-28 12:00:00', 'CZ', '', '3D', 50, 'Main'),
-(72, 20, '2020-05-28 17:40:00', 'CZ', '', '3D', 50, 'Main'),
-(73, 16, '2020-05-27 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(74, 16, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(75, 16, '2020-05-27 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
-(76, 16, '2020-05-27 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
-(77, 16, '2020-05-27 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(78, 16, '2020-05-27 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
-(79, 16, '2020-05-27 18:00:00', 'CZ', '', '3D', 50, 'Main'),
-(80, 16, '2020-05-27 14:00:00', 'CZ', '', '3D', 50, 'Main'),
-(81, 16, '2020-05-27 11:30:00', 'CZ', '', '3D', 50, 'Main'),
-(82, 16, '2020-05-27 20:10:00', 'CZ', '', '3D', 50, 'Main'),
-(83, 16, '2020-05-27 12:00:00', 'CZ', '', '3D', 50, 'Main'),
-(84, 16, '2020-05-27 17:40:00', 'CZ', '', '3D', 50, 'Main'),
-(85, 16, '2020-05-28 18:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(86, 16, '2020-05-28 14:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(87, 16, '2020-05-28 11:30:00', 'EN', 'CS', '2D', 50, 'Main'),
-(88, 16, '2020-05-28 20:10:00', 'EN', 'CS', '2D', 50, 'Main'),
-(89, 16, '2020-05-28 12:00:00', 'EN', 'CS', '2D', 50, 'Main'),
-(90, 16, '2020-05-28 17:40:00', 'EN', 'CS', '2D', 50, 'Main'),
-(91, 16, '2020-05-28 18:00:00', 'CZ', '', '3D', 50, 'Main'),
-(92, 16, '2020-05-28 14:00:00', 'CZ', '', '3D', 50, 'Main'),
-(93, 16, '2020-05-28 11:30:00', 'CZ', '', '3D', 50, 'Main'),
-(94, 16, '2020-05-28 20:10:00', 'CZ', '', '3D', 50, 'Main'),
-(95, 16, '2020-05-28 12:00:00', 'CZ', '', '3D', 50, 'Main'),
-(96, 16, '2020-05-28 17:40:00', 'CZ', '', '3D', 50, 'Main');
+INSERT INTO `projections` (`projection_id`, `movie_id`, `datetime`, `language`, `subtittles`, `dimensions`, `capacity`, `hall`, `last_updated_at`) VALUES
+(1, 1, '2020-05-27 18:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(2, 1, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 2, 'Main', '2020-05-25 19:36:04'),
+(3, 1, '2020-05-27 11:30:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(4, 1, '2020-05-27 20:10:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(5, 1, '2020-05-27 12:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(6, 1, '2020-05-27 17:40:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(7, 1, '2020-05-27 18:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(8, 1, '2020-05-27 14:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(9, 1, '2020-05-27 11:30:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(10, 1, '2020-05-27 20:10:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(11, 1, '2020-05-27 12:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(12, 1, '2020-05-27 17:40:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(13, 1, '2020-05-28 18:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(14, 1, '2020-05-28 14:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(15, 1, '2020-05-28 11:30:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(16, 1, '2020-05-28 20:10:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(17, 1, '2020-05-28 12:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(18, 1, '2020-05-28 17:40:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(19, 1, '2020-05-28 18:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(20, 1, '2020-05-28 14:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(21, 1, '2020-05-28 11:30:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(22, 1, '2020-05-28 20:10:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(23, 1, '2020-05-28 12:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(24, 1, '2020-05-28 17:40:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(25, 8, '2020-05-27 18:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(26, 8, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(27, 8, '2020-05-27 11:30:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(28, 8, '2020-05-27 20:10:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(29, 8, '2020-05-27 12:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(30, 8, '2020-05-27 17:40:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(31, 8, '2020-05-27 18:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(32, 8, '2020-05-27 14:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(33, 8, '2020-05-27 11:30:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(34, 8, '2020-05-27 20:10:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(35, 8, '2020-05-27 12:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(36, 8, '2020-05-27 17:40:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(37, 8, '2020-05-28 18:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(38, 8, '2020-05-28 14:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(39, 8, '2020-05-28 11:30:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(40, 8, '2020-05-28 20:10:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(41, 8, '2020-05-28 12:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(42, 8, '2020-05-28 17:40:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(43, 8, '2020-05-28 18:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(44, 8, '2020-05-28 14:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(45, 8, '2020-05-28 11:30:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(46, 8, '2020-05-28 20:10:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(47, 8, '2020-05-28 12:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(48, 8, '2020-05-28 17:40:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(49, 20, '2020-05-27 18:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(50, 20, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(51, 20, '2020-05-27 11:30:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(52, 20, '2020-05-27 20:10:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(53, 20, '2020-05-27 12:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(54, 20, '2020-05-27 17:40:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(55, 20, '2020-05-27 18:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(56, 20, '2020-05-27 14:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(57, 20, '2020-05-27 11:30:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(58, 20, '2020-05-27 20:10:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(59, 20, '2020-05-27 12:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(60, 20, '2020-05-27 17:40:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(61, 20, '2020-05-28 18:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(62, 20, '2020-05-28 14:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(63, 20, '2020-05-28 11:30:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(64, 20, '2020-05-28 20:10:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(65, 20, '2020-05-28 12:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(66, 20, '2020-05-28 17:40:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(67, 20, '2020-05-28 18:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(68, 20, '2020-05-28 14:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(69, 20, '2020-05-28 11:30:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(70, 20, '2020-05-28 20:10:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(71, 20, '2020-05-28 12:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(72, 20, '2020-05-28 17:40:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(73, 16, '2020-05-27 18:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(74, 16, '2020-05-27 14:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(75, 16, '2020-05-27 11:30:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(76, 16, '2020-05-27 20:10:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(77, 16, '2020-05-27 12:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(78, 16, '2020-05-27 17:40:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(79, 16, '2020-05-27 18:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(80, 16, '2020-05-27 14:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(81, 16, '2020-05-27 11:30:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(82, 16, '2020-05-27 20:10:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(83, 16, '2020-05-27 12:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(84, 16, '2020-05-27 17:40:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(85, 16, '2020-05-28 18:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(86, 16, '2020-05-28 14:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(87, 16, '2020-05-28 11:30:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(88, 16, '2020-05-28 20:10:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(89, 16, '2020-05-28 12:00:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(90, 16, '2020-05-28 17:40:00', 'EN', 'CS', '2D', 50, 'Main', '2020-05-25 19:36:04'),
+(91, 16, '2020-05-28 18:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(92, 16, '2020-05-28 14:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(93, 16, '2020-05-28 11:30:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(94, 16, '2020-05-28 20:10:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(95, 16, '2020-05-28 12:00:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(96, 16, '2020-05-28 17:40:00', 'CZ', '', '3D', 50, 'Main', '2020-05-25 19:36:04'),
+(100, 30, '2020-05-25 07:04:00', 'tw', 'td', '3D', 2, 'n.3', '2020-05-25 19:36:04');
 
 -- --------------------------------------------------------
 
@@ -218,7 +222,6 @@ CREATE TABLE `reservations` (
 --
 
 INSERT INTO `reservations` (`reservation_id`, `projection_id`, `user_id`) VALUES
-(1, 2, 5),
 (2, 2, 8),
 (4, 21, 5),
 (5, 21, 5),
@@ -229,7 +232,10 @@ INSERT INTO `reservations` (`reservation_id`, `projection_id`, `user_id`) VALUES
 (18, 7, 5),
 (19, 7, 5),
 (20, 7, 5),
-(21, 27, 5);
+(71, 2, 5),
+(72, 21, 5),
+(75, 27, 5),
+(76, 52, 5);
 
 -- --------------------------------------------------------
 
@@ -243,18 +249,19 @@ CREATE TABLE `users` (
   `name` varchar(100) COLLATE utf8mb4_czech_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL DEFAULT '',
-  `admin` tinyint(1) NOT NULL DEFAULT 0
+  `admin` tinyint(1) NOT NULL DEFAULT 0,
+  `last_updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci;
 
 --
 -- Vypisuji data pro tabulku `users`
 --
 
-INSERT INTO `users` (`user_id`, `facebook_id`, `name`, `email`, `password`, `admin`) VALUES
-(5, '3468338176527498', 'Martin Friedmann', 'friedmann.m2008@gmail.com', '', 0),
-(7, '', 'Admin', 'admin@domena.cz', '$2y$10$kNNgGrJriu5GN/PA5gi0Men5Lexo4ku2Oti7JfYTgiaUkgUK7gm3O', 1),
-(8, '', 'Email Test', 'frim00@vse.cz', '$2y$10$RLI.B0gcGredFDVZ8yx6fuNqaeH9u1qhsHcEfjkkPQIg1CJa7gn1.', 0),
-(11, '', 'John Doe', 'john@doe.com', '$2y$10$eSFsnQk7WBTQUbvYrcw3xe8avSKFAGK4ARA.oSlBZyK023Oj.pxS.', 0);
+INSERT INTO `users` (`user_id`, `facebook_id`, `name`, `email`, `password`, `admin`, `last_updated_at`) VALUES
+(5, '3468338176527498', 'Martin Friedmann', 'friedmann.m2008@gmail.com', '', 0, '2020-05-25 19:36:48'),
+(7, '', 'Admin', 'admin@domena.cz', '$2y$10$kNNgGrJriu5GN/PA5gi0Men5Lexo4ku2Oti7JfYTgiaUkgUK7gm3O', 1, '2020-05-25 19:36:48'),
+(8, '', 'Email Test', 'frim00@vse.cz', '$2y$10$Q/.DGuZgEL.869euRUiG6OIA97kWV0qLrDSqQVvV285A4EREpzarO', 0, '2020-05-25 19:36:48'),
+(11, '', 'John Doe', 'john@doe.com', '$2y$10$eSFsnQk7WBTQUbvYrcw3xe8avSKFAGK4ARA.oSlBZyK023Oj.pxS.', 0, '2020-05-25 19:36:48');
 
 --
 -- Klíče pro exportované tabulky
@@ -303,25 +310,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pro tabulku `forgotten_passwords`
 --
 ALTER TABLE `forgotten_passwords`
-  MODIFY `forgotten_password_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `forgotten_password_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pro tabulku `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT pro tabulku `projections`
 --
 ALTER TABLE `projections`
-  MODIFY `projection_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `projection_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT pro tabulku `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT pro tabulku `users`
