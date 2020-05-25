@@ -30,7 +30,7 @@
     <meta name="keywords" content="Marvelous Movies,Cinema,Movies,Marvel,Films,Multiplex">
     <meta name="author" content="Martin Friedmann">
 
-    <title><?= htmlspecialchars($pageTitle) ?> - Marvelous Movies</title>
+    <title><?=htmlspecialchars($pageTitle)?> - Marvelous Movies</title>
 </head>
 <body>
 <header class="bg-primary">
@@ -47,46 +47,42 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
 
-                <li class="nav-item <?php echo ($pageTitle != 'Home') ?: 'active' ?>">
+                <li class="nav-item <?=($pageTitle != 'Home')?:'active'?>">
                     <a class="nav-link" href="./">Home</a>
                 </li>
-                <li class="nav-item <?php echo ($pageTitle != 'Program') ?: 'active' ?>">
+                <li class="nav-item <?=($pageTitle != 'Program')?:'active'?>">
                     <a class="nav-link" href="./program/today">Program</a>
                 </li>
-                <li class="nav-item <?php echo ($pageTitle != 'Movies') ?: 'active' ?>">
+                <li class="nav-item <?=($pageTitle != 'Movies')?:'active'?>">
                     <a class="nav-link" href="./movies">Movies</a>
                 </li>
 
                 <!-- User related links -->
-                <?php if(empty($authenticatedUser)): ?>
+<?php if(empty($authenticatedUser)): ?>
                 <!-- Show if user is not authenticated -->
                 <li class="nav-item">
-                    <a class="nav-link <?php echo ($pageTitle != 'Sign In') ?: 'active' ?>" href="./sign-in">Sign in</a>
+                    <a class="nav-link <?=($pageTitle != 'Sign In')?:'active'?>" href="./sign-in">Sign in</a>
                 </li>
 
-                <?php else: ?>
+<?php else: ?>
                 <!-- Show if user is authenticated -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle"
                        href="#"
                        id="navbarDropdown"
-                       data-toggle="dropdown">
-                        <?= htmlspecialchars($authenticatedUser['name']) ?>
-                    </a>
+                       data-toggle="dropdown"><?=htmlspecialchars($authenticatedUser['name'])?></a>
                     <div class="dropdown-menu">
-
-                        <?php if($authenticatedUser['admin']): ?>
+<?php if($authenticatedUser['admin']): ?>
                         <!-- Show if authenticated user is admin -->
-                        <a class="dropdown-item <?php echo ($pageTitle != 'Users') ?: 'active' ?>" href="./users">Users</a>
-                        <?php endif ?>
-
-                        <a class="dropdown-item <?php echo ($pageTitle != 'Reservations') ?: 'active' ?>" href="./reservations">Reservations</a>
-                        <a class="dropdown-item <?php echo ($pageTitle != 'Settings') ?: 'active' ?>" href="./settings">Settings</a>
+                        <a class="dropdown-item <?=($pageTitle != 'Users')?:'active'?>" href="./users">Users</a>
+<?php endif ?>
+                        <a class="dropdown-item <?=($pageTitle != 'Reservations')?:'active'?>" href="./reservations">Reservations</a>
+                        <a class="dropdown-item <?=($pageTitle != 'Settings')?:'active'?>" href="./settings">Settings</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-danger" href="./sign-out">Sign out</a>
                     </div>
                 </li>
-                <?php endif ?>
+<?php endif ?>
             </ul>
         </div>
     </nav>

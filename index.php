@@ -2,11 +2,10 @@
     /* Authorization and Authentication */
     require_once './include/auth.php';
 
-    $pageTitle = 'Home';
+    $pageTitle='Home';
 
     include './include/header.php';
 ?>
-
 <main class="d-flex align-items-center">
     <div class="container-sm py-5">
         <div class="row">
@@ -22,5 +21,4 @@
         </div>
     </div>
 </main>
-
-<?php include './include/footer.php'; ?>
+<?php include './include/footer.php' ?>

@@ -8,13 +8,13 @@
 
     /* If there is posted form try send email to user */
     $errors=false;
-    if (!empty($_POST) && !empty($_POST['email'])){
+    if((!empty($_POST))&&(!empty($_POST['email']))){
         /* Searching user in DB by posted email */
         $userQuery=$db->prepare('SELECT * FROM users WHERE email=:email LIMIT 1;');
         $userQuery->execute([
             ':email'=>trim($_POST['email'])
         ]);
-        if ($user=$userQuery->fetch(PDO::FETCH_ASSOC)){
+        if($user=$userQuery->fetch(PDO::FETCH_ASSOC)){
             /* If email address found generate random code */
             $code='xx'.rand(100000,993952);
 
@@ -62,11 +62,10 @@
         }
     }
 
-    $pageTitle = 'Password reset';
+    $pageTitle='Password reset';
 
     include './include/header.php';
 ?>
-
 <main class="d-flex align-items-center">
   <div class="container-sm py-5">
     <h2 class="pb-3">Forgotten password reset</h2>
@@ -80,7 +79,7 @@
         <?php else: ?>
 
             <form method="post">
-            
+
                 <!-- Email -->
                 <div class="form-group">
                     <label for="email">E-mail:</label>
@@ -89,8 +88,8 @@
                            id="email"
                            placeholder="Enter your e-mail"
                            required
-                           class="form-control <?php echo ($errors?'is-invalid':''); ?>"
-                           value="<?php echo htmlspecialchars(@$_POST['email'])?>"/>
+                           class="form-control <?=($errors)?'is-invalid':''?>"
+                           value="<?=htmlspecialchars(@$_POST['email'])?>"/>
                     <?php if($errors): ?>
                         <div class="invalid-feedback">You entered invalid email address.</div>
                     <?php endif ?>
@@ -105,5 +104,4 @@
         <?php endif ?>
   </div>
 </main>
-
-<?php include './include/footer.php'; ?>
+<?php include './include/footer.php' ?>

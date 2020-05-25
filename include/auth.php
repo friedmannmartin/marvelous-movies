@@ -8,17 +8,17 @@
     require_once './vendor/autoload.php';
 
     /* Authenticates users */
-    if (!empty($_SESSION['user_id'])){
+    if(!empty($_SESSION['user_id'])){
 
         /* Checking whether session have expiration set  */
         if(isset($_SESSION['expiration'])){
 
-            if($_SESSION['expiration'] < time()){
+            if($_SESSION['expiration']<time()){
                 /* Session expired, destroy old session */
                 session_destroy();
             } else {
                 /* Valid session, extend validity by 10 minutes */
-                $_SESSION['expiration'] = strtotime("+10 minutes");
+                $_SESSION['expiration']=strtotime("+10 minutes");
             }
         }
 
@@ -28,14 +28,14 @@
         ]);
 
         /* User needs to be logged out if is not found in DB */
-        if ($userQuery->rowCount()!=1){
+        if($userQuery->rowCount()!=1){
             session_destroy();
             header('Location: https://eso.vse.cz/~frim00/marvelous-movies/');
             exit();
         }
 
         /* $authenticatedUser - Currently logged in user */
-        $authenticatedUser = $userQuery->fetch(PDO::FETCH_ASSOC);
+        $authenticatedUser=$userQuery->fetch(PDO::FETCH_ASSOC);
     }
 
     /* Restrict access to the site to logged in users only */
@@ -51,7 +51,7 @@
     /* Restrict access to the site to not logged in users only */
     function unauthorizedUsersOnly(){
         global $authenticatedUser;
-        if (!empty($authenticatedUser)){
+        if(!empty($authenticatedUser)){
             header("HTTP/1.1 403 Forbidden");
             header('Location: https://eso.vse.cz/~frim00/marvelous-movies/');
             exit();

@@ -5,22 +5,21 @@
     /* Getting list of all movies */
     $moviesQuery=$db->prepare('SELECT * FROM movies;');
     $moviesQuery->execute();
-    $movies = $moviesQuery->fetchAll(PDO::FETCH_ASSOC);
+    $movies=$moviesQuery->fetchAll(PDO::FETCH_ASSOC);
 
-    $pageTitle = 'Movies';
+    $pageTitle='Movies';
 
     include './include/header.php';
 ?>
-
 <main>
     <div class="container-sm py-5">
         <h2 class="pb-3">Movies</h2>
         <div class="card-deck d-flex flex-wrap justify-content-center">
-        <?php foreach ($movies as $movie): ?>
-                <a href="./movie/<?= $movie['url']?>">
+        <?php foreach($movies as $movie): ?>
+                <a href="./movie/<?=$movie['url']?>">
                     <div class="card m-1">
-                        <img src="<?= htmlspecialchars($movie['poster']) ?>"
-                             alt="<?= htmlspecialchars($movie['name']) ?>"
+                        <img src="<?=htmlspecialchars($movie['poster'])?>"
+                             alt="<?=htmlspecialchars($movie['name'])?>"
                              width="172" height="255"/>
                     </div>
                 </a>
@@ -39,5 +38,4 @@
         </div>
     </div>
 </main>
-
-<?php include './include/footer.php'; ?>
+<?php include './include/footer.php' ?>

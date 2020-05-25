@@ -13,7 +13,7 @@
         $projectionQuery->execute([
             ':projection_id'=>$_GET['projection_id']
         ]);
-        $projection = $projectionQuery->fetch(PDO::FETCH_ASSOC);
+        $projection=$projectionQuery->fetch(PDO::FETCH_ASSOC);
 
         /* Checking whether projection id exists */
         if(empty($projection)){
@@ -23,7 +23,7 @@
         }
 
         /* Creating new reservation */
-        if($_GET['act'] == 'add'){
+        if($_GET['act']=='add'){
             /* Checking whether projection have availible capacity */
             if($projection['freeCapacity'] <= 0){
                 header("HTTP/1.1 400 Bad Request");
@@ -41,7 +41,7 @@
             exit();
         }
 
-          /* Removing existing reservation */
+        /* Removing existing reservation */
         if($_GET['act']=='remove'){
             $deleteReservationQuery=$db->prepare('DELETE FROM reservations WHERE projection_id=:projection_id AND user_id=:user_id LIMIT 1;');
             $deleteReservationQuery->execute([

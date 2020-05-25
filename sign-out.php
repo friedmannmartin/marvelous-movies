@@ -1,4 +1,8 @@
 <?php
+  session_start();
+  session_destroy();
+
+  header('Location: ./');
 
   /*
    * ,adPPYYba, 8b       d8  ,adPPYba, 8b,dPPYba,   ,adPPYb,d8  ,adPPYba, 8b,dPPYba, ,adPPYba,
@@ -9,8 +13,3 @@
    *                                                aa,    ,88
    *                                                 "Y8bbdP"
    */
-
-  session_start();
-  session_destroy();
-
-  header('Location: ./');

@@ -7,32 +7,32 @@
     require_once './include/fb.php';
 
     /* Initializing  helper to create facebook login link */
-    $fbHelper = $fb->getRedirectLoginHelper();
+    $fbHelper=$fb->getRedirectLoginHelper();
 
     /* Setting parameters for permissions request and callback after login */
-    $permissions = ['email'];
-    $callbackUrl = htmlspecialchars('https://eso.vse.cz/~frim00/marvelous-movies/facebook-callback.php');
+    $permissions=['email'];
+    $callbackUrl=htmlspecialchars('https://eso.vse.cz/~frim00/marvelous-movies/facebook-callback.php');
 
     /* Using helper for creating facebook login link */
-    $fbLoginUrl = $fbHelper->getLoginUrl($callbackUrl, $permissions);
+    $fbLoginUrl=$fbHelper->getLoginUrl($callbackUrl, $permissions);
 
     /* If there is posted form try sign in user */
     $errors=false;
-    if (!empty($_POST)){
+    if(!empty($_POST)){
         /* Searching for user in database by posted email */
         $userQuery=$db->prepare('SELECT * FROM users WHERE email=:email LIMIT 1;');
         $userQuery->execute([
             ':email'=>trim($_POST['email'])
         ]);
-        if ($user = $userQuery->fetch(PDO::FETCH_ASSOC)){
+        if($user=$userQuery->fetch(PDO::FETCH_ASSOC)){
             /* User found in DB */
-            if (password_verify($_POST['password'],$user['password'])){
+            if(password_verify($_POST['password'],$user['password'])){
                 /* Password verified, save user to session */
-                $_SESSION['user_id'] = $user['user_id'];
+                $_SESSION['user_id']=$user['user_id'];
 
                 /* Set session expiraton */
                 if(!$_POST['remeber']){
-                    $_SESSION['expiration'] = strtotime("+10 minutes");
+                    $_SESSION['expiration']=strtotime("+10 minutes");
                 }
 
                 /* Delete users requests for password reset */
@@ -50,11 +50,10 @@
         }
     }
 
-    $pageTitle = 'Sign In';
+    $pageTitle='Sign In';
 
     include './include/header.php';
 ?>
-
 <main class="d-flex align-items-center">
     <div class="container-sm py-5">
         <div class="row">
@@ -71,9 +70,9 @@
                                placeholder="Enter your e-mail"
                                autocomplete="email"
                                required
-                               class="form-control <?php echo ($errors?'is-invalid':''); ?>"
-                               value="<?php echo htmlspecialchars(@$_POST['email'])?>"/>
-                        <?php if($errors):?>
+                               class="form-control <?=($errors)?'is-invalid':''?>"
+                               value="<?=htmlspecialchars(@$_POST['email'])?>"/>
+                        <?php if($errors): ?>
                             <div class="invalid-feedback">Username or password is wrong.</div>
                         <?php endif?>
                     </div>
@@ -88,8 +87,8 @@
                                    autocomplete="current-password"
                                    data-toggle="password"
                                    required
-                                   class="form-control <?php echo ($errors?'is-invalid':''); ?>" />
-                        <?php if($errors):?>
+                                   class="form-control <?=($errors)?'is-invalid':''?>" />
+                        <?php if($errors): ?>
                             <div class="invalid-feedback">Username or password is wrong.</div>
                         <?php endif?>
                     </div>
@@ -118,4 +117,4 @@
         </div>
     </div>
 </main>
-<?php include './include/footer.php'; ?>
+<?php include './include/footer.php' ?>

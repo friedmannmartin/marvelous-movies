@@ -5,38 +5,38 @@
 
     /* If there is posted form try register in user */
     $errors=[];
-    if (!empty($_POST)){
+    if(!empty($_POST)){
 
         /* Name validation */
-        $name = trim(@$_POST['name']);
-        if (empty($name)){
+        $name=trim(@$_POST['name']);
+        if(empty($name)){
             $errors['name']='You need to enter your username.';
         }
 
         /* Email validation */
-        $email = trim(@$_POST['email']);
-        if (!filter_var($email,FILTER_VALIDATE_EMAIL)){
+        $email=trim(@$_POST['email']);
+        if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
             $errors['email']='You need to enter valid email address.';
         }else{
             $mailQuery=$db->prepare('SELECT * FROM users WHERE email=:email LIMIT 1;');
             $mailQuery->execute([
                 ':email'=>$email
             ]);
-            if ($mailQuery->rowCount() > 0){
+            if($mailQuery->rowCount()>0){
                 $errors['email']='User account with this email address already exists.';
             }
         }
 
         /* Password validation */
-        if (empty($_POST['password']) || (strlen($_POST['password'])<5)){
+        if(empty($_POST['password'])||(strlen($_POST['password'])<5)){
             $errors['password']='Password needs to be at least 5 characters long.';
         }
-        if ($_POST['password']!=$_POST['password2']){
+        if($_POST['password']!=$_POST['password2']){
             $errors['password2']='Passwords do not match.';
         }
 
         /* Insertion of new user to database */
-        if (empty($errors)){
+        if(empty($errors)){
             /* Hashing password */
             $password=password_hash($_POST['password'],PASSWORD_DEFAULT);
 
@@ -55,11 +55,10 @@
         }
     }
 
-    $pageTitle = 'Registration';
+    $pageTitle='Registration';
 
     include './include/header.php';
 ?>
-
 <main class="d-flex align-items-center">
     <div class="container-sm py-5">
         <div class="row">
@@ -76,10 +75,10 @@
                                placeholder="Enter your name"
                                autocomplete="name"
                                required
-                               class="form-control <?php echo (!empty($errors['name'])?'is-invalid':''); ?>"
-                               value="<?php echo htmlspecialchars(@$name);?>" />
-                        <?php if(!empty($errors['name'])):?>
-                            <div class="invalid-feedback"><?= $errors['name'] ?></div>
+                               class="form-control <?=(!empty($errors['name']))?'is-invalid':''?>"
+                               value="<?=htmlspecialchars(@$name)?>" />
+                        <?php if(!empty($errors['name'])): ?>
+                            <div class="invalid-feedback"><?=$errors['name']?></div>
                         <?php endif ?>
                     </div>
 
@@ -92,10 +91,10 @@
                                placeholder="Enter your e-mail"
                                autocomplete="email"
                                required
-                               class="form-control <?php echo (!empty($errors['email'])?'is-invalid':''); ?>"
-                               value="<?php echo htmlspecialchars(@$email);?>"/>
-                        <?php if(!empty($errors['email'])):?>
-                            <div class="invalid-feedback"><?= $errors['email'] ?></div>
+                               class="form-control <?=(!empty($errors['email']))?'is-invalid':''?>"
+                               value="<?=htmlspecialchars(@$email)?>"/>
+                        <?php if(!empty($errors['email'])): ?>
+                            <div class="invalid-feedback"><?=$errors['email']?></div>
                         <?php endif ?>
                     </div>
 
@@ -110,9 +109,9 @@
                                    autocomplete="new-password"
                                    data-toggle="password"
                                    required
-                                   class="form-control <?php echo (!empty($errors['password'])?'is-invalid':''); ?>" />
-                            <?php if(!empty($errors['password'])):?>
-                                <div class="invalid-feedback"><?= $errors['password'] ?></div>
+                                   class="form-control <?=(!empty($errors['password']))?'is-invalid':''?>" />
+                            <?php if(!empty($errors['password'])): ?>
+                                <div class="invalid-feedback"><?=$errors['password']?></div>
                             <?php endif ?>
                         </div>
 
@@ -124,9 +123,9 @@
                                    placeholder="Enter your password again"
                                    data-toggle="password"
                                    required
-                                   class="form-control <?php echo (!empty($errors['password2'])?'is-invalid':''); ?>" />
-                            <?php if(!empty($errors['password2'])):?>
-                                <div class="invalid-feedback"><?= $errors['password2'] ?></div>
+                                   class="form-control <?=(!empty($errors['password2']))?'is-invalid':''?>" />
+                            <?php if(!empty($errors['password2'])): ?>
+                                <div class="invalid-feedback"><?=$errors['password2']?></div>
                             <?php endif ?>
                         </div>
                     </div>
@@ -144,5 +143,4 @@
         </div>
     </div>
 </main>
-
-<?php include './include/footer.php'; ?>
+<?php include './include/footer.php' ?>

@@ -13,7 +13,7 @@
     /* If there is posted form try renew password */
     $invalidCode=false;
     $invalidPassword=false;
-    if (!empty($_REQUEST) && !empty($_REQUEST['code'])){
+    if((!empty($_REQUEST))&&(!empty($_REQUEST['code']))){
 
         /* Searching for record of forgotten password request */
         $query=$db->prepare('SELECT * FROM forgotten_passwords WHERE forgotten_password_id=:id AND code=:code AND user_id=:user LIMIT 1;');
@@ -22,9 +22,9 @@
             ':code'=>$_REQUEST['code'],
             ':id'=>$_REQUEST['request'],
         ]);
-        if ($existingRequest=$query->fetch(PDO::FETCH_ASSOC)){
+        if($existingRequest=$query->fetch(PDO::FETCH_ASSOC)){
             /* Checking whether request is stil valid */
-            if (strtotime($existingRequest['created'])<(time()-24*3600)){
+            if(strtotime($existingRequest['created'])<(time()-24*3600)){
                 /* Request has expired */
                 $invalidCode=true;
             }
@@ -33,18 +33,18 @@
             $invalidCode=true;
         }
 
-        if (!empty($_POST) && !$invalidCode){
+        if((!empty($_POST))&&(!$invalidCode)){
 
             /* New password validation */
-            if (empty($_POST['password']) || (strlen($_POST['password'])<5)){
+            if(empty($_POST['password'])||(strlen($_POST['password'])<5)){
                 $invalidPassword='Password needs to be at least 5 characters long.';
             }
-            if ($_POST['password']!=$_POST['password2']){
+            if($_POST['password']!=$_POST['password2']){
                 $invalidPassword='Passwords do not match.';
             }
 
             /* Updating new password in DB */
-            if (!$invalidPassword){
+            if(!$invalidPassword){
                 $saveQuery=$db->prepare('UPDATE users SET password=:password WHERE user_id=:user LIMIT 1;');
                 $saveQuery->execute([
                     ':user'=>$existingRequest['user_id'],
@@ -72,11 +72,10 @@
         }
     }
 
-    $pageTitle = 'Password renew';
+    $pageTitle='Password renew';
 
     include './include/header.php';
 ?>
-
 <main class="d-flex align-items-center">
     <div class="container-sm py-5">
         <h2 class="pb-3">Password renew</h2>
@@ -98,8 +97,8 @@
                            autocomplete="new-password"
                            data-toggle="password"
                            required
-                           class="form-control <?php echo ($invalidPassword ? 'is-invalid':'') ?>"/>
-                    <?php if ($invalidPassword):?>
+                           class="form-control <?=($invalidPassword)?'is-invalid':''?>"/>
+                    <?php if($invalidPassword): ?>
                         <div class="invalid-feedback"><?=$invalidPassword?></div>
                     <?php endif ?>
                 </div>
@@ -113,8 +112,8 @@
                            autocomplete="new-password"
                            data-toggle="password"
                            required
-                           class="form-control <?php echo ($invalidPassword?'is-invalid':'') ?>" />
-                    <?php if ($invalidPassword):?>
+                           class="form-control <?=($invalidPassword)?'is-invalid':''?>" />
+                    <?php if($invalidPassword): ?>
                         <div class="invalid-feedback"><?=$invalidPassword?></div>
                     <?php endif ?>
                 </div>
@@ -122,9 +121,9 @@
             </div>
 
 
-            <input type="hidden" name="code"    value="<?= htmlspecialchars($_REQUEST['code']) ?>" />
-            <input type="hidden" name="user"    value="<?= htmlspecialchars($_REQUEST['user']) ?>" />
-            <input type="hidden" name="request" value="<?= htmlspecialchars($_REQUEST['request']) ?>" />
+            <input type="hidden" name="code"    value="<?=htmlspecialchars($_REQUEST['code'])?>" />
+            <input type="hidden" name="user"    value="<?=htmlspecialchars($_REQUEST['user'])?>" />
+            <input type="hidden" name="request" value="<?=htmlspecialchars($_REQUEST['request'])?>" />
 
             <button type="submit" class="btn btn-primary">Change password</button>
             <hr>
@@ -134,5 +133,4 @@
         <?php endif ?>
     </div>
 </main>
-
-<?php include './include/footer.php'; ?>
+<?php include './include/footer.php' ?>
