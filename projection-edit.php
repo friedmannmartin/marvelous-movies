@@ -184,7 +184,7 @@
                         class="form-control <?=(!empty($errors['movie-id']))?'is-invalid':''?>">
                     <option value="" disabled selected>Select movie</option>
                 <?php foreach($movies as $movie): ?>
-                    <option value="<?=$movie['movie_id']?>" <?=(@$projection['movie_id']!=$movie['movie_id'])?:'selected'?>><?=$movie['name']?></option>
+                    <option value="<?=htmlspecialchars($movie['movie_id'])?>" <?=(@$projection['movie_id']!=$movie['movie_id'])?:'selected'?>><?=htmlspecialchars($movie['name'])?></option>
                 <?php endforeach ?>
                 </select>
                 <?php if(!empty($errors['movie-id'])): ?>

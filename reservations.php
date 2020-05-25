@@ -50,7 +50,7 @@
                                                 data-html="true"
                                                 title='<i class="fa fa-volume-up"></i> <?=htmlspecialchars($reservation['language'])?><br>
                                                         <i class="fa fa-cc"></i> <?=($reservation['subtittles']=='')? '<i class="fa fa-ban"></i>':htmlspecialchars($reservation['subtittles'])?>'>
-                                                <?=$reservation['language']?>
+                                                <?=htmlspecialchars($reservation['language'])?>
                                     </span>
                                 <?php if($reservation['dimensions']=='3D'): ?>
                                     <span class="badge badge-warning">3D</span>
@@ -58,14 +58,14 @@
                             </li>
                             <li class="list-group-item">Date: <?=$datetime->format('j.n.Y')?></li>
                             <li class="list-group-item">Time: <?=$datetime->format('H:i')?></li>
-                            <li class="list-group-item">Hall: <?=$reservation['hall']?></li>
+                            <li class="list-group-item">Hall: <?=htmlspecialchars($reservation['hall'])?></li>
                         </ul>
                         <div class="card-footer text-white bg-secondary d-flex justify-content-between align-items-center">
                             <span class="mr-2">Your booked seats:</span>
                             <div class="btn-group">
-                                <a href="./reservation/remove/<?=$reservation['projection_id']?>" class="btn btn-danger"><i class="fa fa-minus"></i></a>
+                                <a href="./reservation/remove/<?=htmlspecialchars($reservation['projection_id'])?>" class="btn btn-danger"><i class="fa fa-minus"></i></a>
                                 <span class="btn btn-light"><?=$reservation['booked_seats']?></span>
-                                <a href="./reservation/add/<?=$reservation['projection_id']?>" class="btn btn-success <?=($reservation['free_capacity'] <= 0)?'disabled" tabindex="-1':''?>"><i class="fa fa-plus"></i></a>
+                                <a href="./reservation/add/<?=htmlspecialchars($reservation['projection_id'])?>" class="btn btn-success <?=($reservation['free_capacity'] <= 0)?'disabled" tabindex="-1':''?>"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
                     </div>

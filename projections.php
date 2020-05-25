@@ -77,7 +77,7 @@
                               data-html="true"
                               title='<i class="fa fa-volume-up"></i> <?=htmlspecialchars($projectionType['language'])?><br>
                                      <i class="fa fa-cc"></i> <?=($projectionType['subtittles']=='')? '<i class="fa fa-ban"></i>':htmlspecialchars($projectionType['subtittles'])?>'>
-                            <?=$projectionType['language']?>
+                            <?=htmlspecialchars($projectionType['language'])?>
                         </span>
                         <?php if($projectionType['dimensions']=='3D'): ?>
                             <span class="badge badge-warning">3D</span>
@@ -116,14 +116,14 @@
                             if($projection['freeCapacity']==0){
                                 $capacity='Full capacity';
                             } else{
-                                $capacity='Capacity: '.$projection['capacity'].'<br>Booked: '.$projection['freeCapacity'];
+                                $capacity='Capacity: '.htmlspecialchars($projection['capacity']).'<br>Booked: '.$projection['freeCapacity'];
                             }
                     ?>
 
                     <?php if(!empty($authenticatedUser)): ?>
                         <!-- Show if authenticated user is admin -->
                         <div class="btn-group mb-2 ">
-                            <a href="./reservation/add/<?=$projection['projection_id']?>"
+                            <a href="./reservation/add/<?=htmlspecialchars($projection['projection_id'])?>"
                                data-toggle="tooltip"
                                data-placement="bottom"
                                data-html="true"
@@ -131,7 +131,7 @@
                                class="btn btn-outline-primary <?=(($time<$now)||($projection['freeCapacity']=='0'))?'disabled" tabindex="-1':''?>"><?=$time->format('G:i')?></a>
                             <?php if(@$authenticatedUser['admin']): ?>
                             <!-- Button for editing projection -->
-                            <a href="./projection/edit/<?=$projection['projection_id']?>"
+                            <a href="./projection/edit/<?=htmlspecialchars($projection['projection_id'])?>"
                                class="btn btn-outline-secondary <?=($time>$now)?: 'disabled" tabindex="-1'?>">
                                 <i class="fa fa-edit"></i>
                             </a>

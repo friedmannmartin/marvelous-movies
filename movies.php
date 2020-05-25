@@ -16,7 +16,7 @@
         <h2 class="pb-3">Movies</h2>
         <div class="card-deck d-flex flex-wrap justify-content-center">
         <?php foreach($movies as $movie): ?>
-                <a href="./movie/<?=$movie['url']?>">
+                <a href="./movie/<?=htmlspecialchars($movie['url'])?>">
                     <div class="card m-1">
                         <img src="<?=htmlspecialchars($movie['poster'])?>"
                              alt="<?=htmlspecialchars($movie['name'])?>"
