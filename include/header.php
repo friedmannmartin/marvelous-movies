@@ -39,7 +39,7 @@
         <a class="navbar-brand" href="./">MARVELOUS MOVIES</a>
 
         <!-- Menu opening button on small displays -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -70,13 +70,10 @@
                     <a class="nav-link dropdown-toggle"
                        href="#"
                        id="navbarDropdown"
-                       role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true"
-                       aria-expanded="false">
+                       data-toggle="dropdown">
                         <?= htmlspecialchars($authenticatedUser['name']) ?>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu">
 
                         <?php if($authenticatedUser['admin']): ?>
                         <!-- Show if authenticated user is admin -->

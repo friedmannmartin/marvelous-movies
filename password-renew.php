@@ -99,9 +99,9 @@
                            data-toggle="password"
                            required
                            class="form-control <?php echo ($invalidPassword ? 'is-invalid':'') ?>"/>
-                <?php if ($invalidPassword):?>
-                    <div class="invalid-feedback"><?=$invalidPassword?></div>
-                <?php endif ?>
+                    <?php if ($invalidPassword):?>
+                        <div class="invalid-feedback"><?=$invalidPassword?></div>
+                    <?php endif ?>
                 </div>
 
                 <div class="form-group col-sm">
@@ -114,10 +114,11 @@
                            data-toggle="password"
                            required
                            class="form-control <?php echo ($invalidPassword?'is-invalid':'') ?>" />
+                    <?php if ($invalidPassword):?>
+                        <div class="invalid-feedback"><?=$invalidPassword?></div>
+                    <?php endif ?>
                 </div>
-                <?php if ($invalidPassword):?>
-                    <div class="invalid-feedback"><?=$invalidPassword?></div>
-                <?php endif ?>
+
             </div>
 
 

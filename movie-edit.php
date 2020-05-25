@@ -180,12 +180,12 @@
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text"
-                        name="name"
-                        id="name"
-                        placeholder="Enter name of the movie"
-                        required
-                        class="form-control <?php echo (!empty($errors['name'])?'is-invalid':''); ?>"
-                        value="<?php echo htmlspecialchars(@$movie['name']);?>" />
+                           name="name"
+                           id="name"
+                           placeholder="Enter name of the movie"
+                           required
+                           class="form-control <?php echo (!empty($errors['name'])?'is-invalid':''); ?>"
+                           value="<?php echo htmlspecialchars(@$movie['name']);?>" />
                     <?php if(!empty($errors['name'])):?>
                         <div class="invalid-feedback"><?= $errors['name'] ?></div>
                     <?php endif ?>
@@ -199,13 +199,12 @@
                             <span class="input-group-text" id="url">https://marvelous-movies.com/movie/</span>
                         </div>
                         <input type="text"
-                            name="url"
-                            id="url"
-                            placeholder="Enter uniqie URL for the movie"
-                            aria-describedby="url"
-                            required
-                            class="form-control <?php echo (!empty($errors['url'])?'is-invalid':''); ?>"
-                            value="<?php echo htmlspecialchars(@$movie['url']);?>" />
+                               name="url"
+                               id="url"
+                               placeholder="Enter uniqie URL for the movie"
+                               required
+                               class="form-control <?php echo (!empty($errors['url'])?'is-invalid':''); ?>"
+                               value="<?php echo htmlspecialchars(@$movie['url']);?>" />
                         <?php if(!empty($errors['url'])):?>
                             <div class="invalid-feedback"><?= $errors['url'] ?></div>
                         <?php endif ?>
@@ -220,13 +219,12 @@
                             <span class="input-group-text" id="url">https://www.youtube.com/watch?v=</span>
                         </div>
                         <input type="text"
-                            name="trailer"
-                            id="trailer"
-                            placeholder="Enter YouTube video ID for the movie trailer"
-                            aria-describedby="trailer"
-                            required
-                            class="form-control <?php echo (!empty($errors['trailer'])?'is-invalid':''); ?>"
-                            value="<?php echo htmlspecialchars(@$movie['trailer']);?>" />
+                               name="trailer"
+                               id="trailer"
+                               placeholder="Enter YouTube video ID for the movie trailer"
+                               required
+                               class="form-control <?php echo (!empty($errors['trailer'])?'is-invalid':''); ?>"
+                               value="<?php echo htmlspecialchars(@$movie['trailer']);?>" />
                         <?php if(!empty($errors['trailer'])):?>
                             <div class="invalid-feedback"><?= $errors['trailer'] ?></div>
                         <?php endif ?>
@@ -236,13 +234,13 @@
                 <!-- Poster -->
                 <div class="form-group">
                     <label for="name">Poster:</label>
-                    <input type="text"
-                        name="poster"
-                        id="poster"
-                        placeholder="Enter URL of the movie poster"
-                        required
-                        class="form-control <?php echo (!empty($errors['poster'])?'is-invalid':''); ?>"
-                        value="<?php echo htmlspecialchars(@$movie['poster']);?>" />
+                    <input type="url"
+                           name="poster"
+                           id="poster"
+                           placeholder="Enter URL of the movie poster"
+                           required
+                           class="form-control <?php echo (!empty($errors['poster'])?'is-invalid':''); ?>"
+                           value="<?php echo htmlspecialchars(@$movie['poster']);?>" />
                     <?php if(!empty($errors['poster'])):?>
                         <div class="invalid-feedback"><?= $errors['poster'] ?></div>
                     <?php endif ?>
@@ -274,14 +272,14 @@
                     <div class="form-group col-sm">
                         <label for="year">Year:</label>
                         <input type="number"
-                            name="year"
-                            id="year"
-                            placeholder="Enter year when was movie released"
-                            min="1970"
-                            max="2020"
-                            required
-                            class="form-control <?php echo (!empty($errors['year'])?'is-invalid':''); ?>"
-                            value="<?php echo htmlspecialchars(@$movie['year']);?>" />
+                               name="year"
+                               id="year"
+                               placeholder="Enter year when was movie released"
+                               min="1970"
+                               max="2020"
+                               required
+                               class="form-control <?php echo (!empty($errors['year'])?'is-invalid':''); ?>"
+                               value="<?php echo htmlspecialchars(@$movie['year']);?>" />
                         <?php if(!empty($errors['year'])):?>
                             <div class="invalid-feedback"><?= $errors['year'] ?></div>
                         <?php endif ?>
@@ -292,14 +290,13 @@
                         <label for="length">Length:</label>
                         <div class="input-group">
                             <input type="number"
-                                name="length"
-                                id="length"
-                                placeholder="Enter length of the movie"
-                                aria-describedby="length"
-                                min="1"
-                                required
-                                class="form-control <?php echo (!empty($errors['length'])?'is-invalid':''); ?>"
-                                value="<?php echo htmlspecialchars(@$movie['length']);?>" />
+                                   name="length"
+                                   id="length"
+                                   placeholder="Enter length of the movie"
+                                   min="1"
+                                   required
+                                   class="form-control <?php echo (!empty($errors['length'])?'is-invalid':''); ?>"
+                                   value="<?php echo htmlspecialchars(@$movie['length']);?>" />
                             <div class="input-group-append">
                                 <span class="input-group-text" id="length">min</span>
                             </div>
@@ -319,8 +316,7 @@
                             placeholder="Type movie description"
                             rows="4"
                             required
-                            class="form-control <?php echo (!empty($errors['description'])?'is-invalid':''); ?>"
-                            ><?= htmlspecialchars(@$movie['description']);?></textarea>
+                            class="form-control <?php echo (!empty($errors['description'])?'is-invalid':''); ?>"><?= htmlspecialchars(@$movie['description']);?></textarea>
                     <?php if(!empty($errors['description'])):?>
                         <div class="invalid-feedback"><?= $errors['description'] ?></div>
                     <?php endif ?>

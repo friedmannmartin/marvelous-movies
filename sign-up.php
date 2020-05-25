@@ -71,13 +71,13 @@
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text"
-                            name="name"
-                            id="name"
-                            placeholder="Enter your name"
-                            autocomplete="name"
-                            required
-                            class="form-control <?php echo (!empty($errors['name'])?'is-invalid':''); ?>"
-                            value="<?php echo htmlspecialchars(@$name);?>" />
+                               name="name"
+                               id="name"
+                               placeholder="Enter your name"
+                               autocomplete="name"
+                               required
+                               class="form-control <?php echo (!empty($errors['name'])?'is-invalid':''); ?>"
+                               value="<?php echo htmlspecialchars(@$name);?>" />
                         <?php if(!empty($errors['name'])):?>
                             <div class="invalid-feedback"><?= $errors['name'] ?></div>
                         <?php endif ?>
@@ -87,13 +87,13 @@
                     <div class="form-group">
                         <label for="email">E-mail:</label>
                         <input type="email"
-                            name="email"
-                            id="email"
-                            placeholder="Enter your e-mail"
-                            autocomplete="email"
-                            required
-                            class="form-control <?php echo (!empty($errors['email'])?'is-invalid':''); ?>"
-                            value="<?php echo htmlspecialchars(@$email);?>"/>
+                               name="email"
+                               id="email"
+                               placeholder="Enter your e-mail"
+                               autocomplete="email"
+                               required
+                               class="form-control <?php echo (!empty($errors['email'])?'is-invalid':''); ?>"
+                               value="<?php echo htmlspecialchars(@$email);?>"/>
                         <?php if(!empty($errors['email'])):?>
                             <div class="invalid-feedback"><?= $errors['email'] ?></div>
                         <?php endif ?>
@@ -104,13 +104,13 @@
                         <div class="form-group col-sm">
                             <label for="password">Password:</label>
                             <input type="password"
-                                name="password"
-                                id="password"
-                                placeholder="Enter your password"
-                                autocomplete="new-password"
-                                data-toggle="password"
-                                required
-                                class="form-control <?php echo (!empty($errors['password'])?'is-invalid':''); ?>" />
+                                   name="password"
+                                   id="password"
+                                   placeholder="Enter your password"
+                                   autocomplete="new-password"
+                                   data-toggle="password"
+                                   required
+                                   class="form-control <?php echo (!empty($errors['password'])?'is-invalid':''); ?>" />
                             <?php if(!empty($errors['password'])):?>
                                 <div class="invalid-feedback"><?= $errors['password'] ?></div>
                             <?php endif ?>
@@ -119,12 +119,12 @@
                         <div class="form-group col-sm">
                             <label for="password2">Password confirmation:</label>
                             <input type="password"
-                                name="password2"
-                                id="password2"
-                                placeholder="Enter your password again"
-                                data-toggle="password"
-                                required
-                                class="form-control <?php echo (!empty($errors['password2'])?'is-invalid':''); ?>" />
+                                   name="password2"
+                                   id="password2"
+                                   placeholder="Enter your password again"
+                                   data-toggle="password"
+                                   required
+                                   class="form-control <?php echo (!empty($errors['password2'])?'is-invalid':''); ?>" />
                             <?php if(!empty($errors['password2'])):?>
                                 <div class="invalid-feedback"><?= $errors['password2'] ?></div>
                             <?php endif ?>
@@ -139,7 +139,7 @@
                 </form>
             </div>
             <div class="col d-none d-sm-block">
-                <img src="./img/sign-up.svg" alt="Superhero" class="img-fluid" width="600" height="360"/>
+                <img src="./img/sign-up.svg" alt="Couch guy" class="img-fluid" width="600" height="360"/>
             </div>
         </div>
     </div>

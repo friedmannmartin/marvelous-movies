@@ -27,7 +27,7 @@
         <?php endforeach?>
 
         <?php if(@$authenticatedUser['admin']): ?>
-        <!-- Show only to admin -->
+        <!-- Show if authenticated user is admin -->
             <a href="./movie/new">
                 <div class="card m-1 bg-primary d-flex justify-content-center align-items-center" style="width:172px; height:255px;" width="172" height="255">
                     <span>

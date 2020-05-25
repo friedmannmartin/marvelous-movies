@@ -71,32 +71,37 @@
   <div class="container-sm py-5">
     <h2 class="pb-3">Forgotten password reset</h2>
         <?php if(@$_GET['mailed']=='ok'): ?>
+
             <div class="alert alert-success">
                 <p>Check your inbox for e-mail with link, which will allow you to change your password.</p>
                 <a href="./" class="btn btn-success">Go back to homepage</a>
             </div>
+
         <?php else: ?>
-        <form method="post">
 
-            <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Enter your e-mail"
-                    required
-                    class="form-control <?php echo ($errors?'is-invalid':''); ?>"
-                    value="<?php echo htmlspecialchars(@$_POST['email'])?>"/>
-                <?php if($errors): ?>
-                    <div class="invalid-feedback">You entered invalid email address.</div>
-                <?php endif ?>
-            </div>
+            <form method="post">
+            
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email"
+                           name="email"
+                           id="email"
+                           placeholder="Enter your e-mail"
+                           required
+                           class="form-control <?php echo ($errors?'is-invalid':''); ?>"
+                           value="<?php echo htmlspecialchars(@$_POST['email'])?>"/>
+                    <?php if($errors): ?>
+                        <div class="invalid-feedback">You entered invalid email address.</div>
+                    <?php endif ?>
+                </div>
 
-            <button type="submit" class="btn btn-primary">Send me email for password reset</button>
-            <hr>
-            <a href="./sign-in"   class="btn btn-light">Sign In</a>
-            <a href="./"          class="btn btn-light">Cancel</a>
-        </form>
+                <button type="submit" class="btn btn-primary">Send me email for password reset</button>
+                <hr>
+                <a href="./sign-in"   class="btn btn-light">Sign In</a>
+                <a href="./"          class="btn btn-light">Cancel</a>
+            </form>
+
         <?php endif ?>
   </div>
 </main>

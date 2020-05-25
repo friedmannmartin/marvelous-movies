@@ -43,7 +43,7 @@
                     </div>
                     <div class="btn-group m-2">
                         <a href="./program/<?= $previousDay->format('Y-m-d') ?>"
-                        class="btn btn-secondary <?= ($date > date('Y-m-d'))?: 'disabled" tabindex="-1" role="button" aria-disabled="true' ?>" >
+                        class="btn btn-secondary <?= ($date > date('Y-m-d'))?: 'disabled" tabindex="-1' ?>" >
                             Previous day
                         </a>
                         <a href="./program/<?= $day->format('Y-m-d')?>" class="btn btn-secondary"><?= $day->format('j.n.Y')?></a>
@@ -52,7 +52,7 @@
                 </div>
 
                 <?php if(@$authenticatedUser['admin']): ?>
-                <!-- Creating new projection -->
+                <!-- Show if authenticated user is admin -->
                 <a href="./projection/new" class="btn btn-primary m-2">
                     Add projection
                 </a>
@@ -122,25 +122,25 @@
                     ?>
 
                     <?php if(!empty($authenticatedUser)): ?>
-                    <!-- Show olny to authenticated users -->
-                    <div class="btn-group mb-2 ">
-                        <a href="./reservation/add/<?= $projection['projection_id']?>"
-                           data-toggle="tooltip"
-                           data-placement="bottom"
-                           data-html="true"
-                           title="<?= $capacity ?>"
-                           class="btn btn-outline-primary <?= ($time < $now || $projection['freeCapacity'] == '0')? 'disabled" tabindex="-1' : ''?>"><?= $time->format('G:i');?></a>
-                        <?php if(@$authenticatedUser['admin']): ?>
-                        <!-- Button for editing projection -->
-                        <a href="./projection/edit/<?= $projection['projection_id']?>"
-                           class="btn btn-outline-secondary <?= ($time > $now)?: 'disabled" tabindex="-1" role="button" aria-disabled="true' ?>">
-                           <i class="fa fa-edit"></i>
-                        </a>
-                        <?php endif ?>
-                    </div>
+                        <!-- Show if authenticated user is admin -->
+                        <div class="btn-group mb-2 ">
+                            <a href="./reservation/add/<?= $projection['projection_id']?>"
+                               data-toggle="tooltip"
+                               data-placement="bottom"
+                               data-html="true"
+                               title="<?= $capacity ?>"
+                               class="btn btn-outline-primary <?= ($time < $now || $projection['freeCapacity'] == '0')? 'disabled" tabindex="-1' : ''?>"><?= $time->format('G:i');?></a>
+                            <?php if(@$authenticatedUser['admin']): ?>
+                            <!-- Button for editing projection -->
+                            <a href="./projection/edit/<?= $projection['projection_id']?>"
+                               class="btn btn-outline-secondary <?= ($time > $now)?: 'disabled" tabindex="-1' ?>">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <?php endif ?>
+                        </div>
                     <?php else: ?>
-                        <!-- Show to unauthenticated users -->
-                        <a class="btn btn-outline-primary mb-2 disabled" tabindex="-1" role="button" aria-disabled="true">
+                        <!-- Show if authenticated user is not admin -->
+                        <a class="btn btn-outline-primary mb-2 disabled" tabindex="-1">
                             <?= $time->format('G:i');?>
                         </a>
                     <?php endif ?>

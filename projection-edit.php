@@ -215,12 +215,12 @@
                 <div class="form-group col-sm">
                     <label for="name">Language:</label>
                     <input type="text"
-                        name="language"
-                        id="language"
-                        placeholder="Enter projection language"
-                        required
-                        class="form-control <?php echo (!empty($errors['language'])?'is-invalid':''); ?>"
-                        value="<?php echo htmlspecialchars(@$projection['language']);?>" />
+                           name="language"
+                           id="language"
+                           placeholder="Enter projection language"
+                           required
+                           class="form-control <?php echo (!empty($errors['language'])?'is-invalid':''); ?>"
+                           value="<?php echo htmlspecialchars(@$projection['language']);?>" />
                     <?php if(!empty($errors['language'])):?>
                         <div class="invalid-feedback"><?= $errors['language'] ?></div>
                     <?php endif ?>
@@ -230,11 +230,11 @@
                 <div class="form-group col-sm">
                     <label for="name">Subtittles:</label>
                     <input type="text"
-                        name="subtittles"
-                        id="subtittles"
-                        placeholder="Enter language of projection subtittles"
-                        class="form-control <?php echo (!empty($errors['subtittles'])?'is-invalid':''); ?>"
-                        value="<?php echo htmlspecialchars(@$projection['subtittles']);?>" />
+                           name="subtittles"
+                           id="subtittles"
+                           placeholder="Enter language of projection subtittles"
+                           class="form-control <?php echo (!empty($errors['subtittles'])?'is-invalid':''); ?>"
+                           value="<?php echo htmlspecialchars(@$projection['subtittles']);?>" />
                     <?php if(!empty($errors['subtittles'])):?>
                         <div class="invalid-feedback"><?= $errors['subtittles'] ?></div>
                     <?php endif ?>

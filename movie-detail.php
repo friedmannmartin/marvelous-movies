@@ -19,7 +19,7 @@
         $movie = $movieQuery->fetch(PDO::FETCH_ASSOC);
     }
 
-    $pageTitle = $movie['name'];
+    $pageTitle = htmlspecialchars($movie['name']);
 
     include './include/header.php';
 ?>
@@ -28,7 +28,7 @@
     <div class="container-sm py-5">
 
         <?php if(@$authenticatedUser['admin']): ?>
-        <!-- Show only to admin -->
+        <!-- Show if authenticated user is admin -->
             <a href="./movie/edit/<?= $movie['movie_id']?>" class="btn btn-primary float-right">Edit movie</a>
         <?php endif ?>
 

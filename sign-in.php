@@ -66,13 +66,13 @@
                     <div class="form-group">
                         <label for="email">E-mail:</label>
                         <input type="email"
-                            name="email"
-                            id="email"
-                            placeholder="Enter your e-mail"
-                            autocomplete="email"
-                            required
-                            class="form-control <?php echo ($errors?'is-invalid':''); ?>"
-                            value="<?php echo htmlspecialchars(@$_POST['email'])?>"/>
+                               name="email"
+                               id="email"
+                               placeholder="Enter your e-mail"
+                               autocomplete="email"
+                               required
+                               class="form-control <?php echo ($errors?'is-invalid':''); ?>"
+                               value="<?php echo htmlspecialchars(@$_POST['email'])?>"/>
                         <?php if($errors):?>
                             <div class="invalid-feedback">Username or password is wrong.</div>
                         <?php endif?>
