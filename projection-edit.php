@@ -19,6 +19,18 @@
         /* $projection - Currently edited projection */
         $projection=$projectionQuery->fetch(PDO::FETCH_ASSOC);
 
+
+        $reservationsQuery=$db->prepare('SELECT user_id, name, COUNT(reservation_id) AS quantity
+                                            FROM reservations
+                                            JOIN users USING (user_id)
+                                            WHERE projection_id=:projection_id
+                                            GROUP BY user_id;');
+        $reservationsQuery->execute([
+            ':projection_id'=>$_GET['projection_id']
+        ]);
+        /* $reservations - List of reservation for this projection */
+        $reservations=$reservationsQuery->fetchAll(PDO::FETCH_ASSOC);
+
         /* $deleteLock - Prevention from deleting projection with existing reservations (true=locked, false=unlocked) */
         $deleteLock=true;
         $deleteLockQuery=$db->prepare('SELECT * FROM projections JOIN reservations USING (projection_id) WHERE projection_id=:projection_id');
@@ -109,7 +121,7 @@
             if(empty($_GET['projection_id'])){
             /* Insertion of new projection to database */
                 $insertProjection=$db->prepare('INSERT INTO projections (  movie_id,   datetime,   language,   subtittles,   dimensions,   capacity,   hall)
-                                                                VALUES ( :movie_id,  :datetime,  :language,  :subtittles,  :dimensions,  :capacity,  :hall);');
+                                                                 VALUES ( :movie_id,  :datetime,  :language,  :subtittles,  :dimensions,  :capacity,  :hall);');
                 $insertProjection->execute([
                     ':movie_id'=>$movieId,
                     ':datetime'=>$datetime->format('Y-m-d H:i:s'),
@@ -124,29 +136,35 @@
                 header("Location: ./edit/$lastInsertedProjection");
                 exit();
             } else {
-                /* Update projection in database */
-                if(empty($errors)){
-                    $upadteMovie=$db->prepare('UPDATE projections SET movie_id=:movie_id,
-                                                                     datetime=:datetime,
-                                                                     language=:language,
-                                                                     subtittles=:subtittles,
-                                                                     dimensions=:dimensions,
-                                                                     capacity=:capacity,
-                                                                     hall=:hall
-                                                WHERE projection_id=:projection_id LIMIT 1;');
-                    $upadteMovie->execute([
-                        ':projection_id'=>$_GET['projection_id'],
-                        ':movie_id'=>$movieId,
-                        ':datetime'=>$datetime->format('Y-m-d H:i:s'),
-                        ':language'=>$language,
-                        ':subtittles'=>$subtittles,
-                        ':dimensions'=>$dimensions,
-                        ':capacity'=>$capacity,
-                        ':hall'=>$hall
-                    ]);
+                /* Check whether was updated in meantime */
+                $optimisticLock = false;
+                if ($_POST['last_updated_at'] != $projection['last_updated_at']) {
+                    $optimisticLock = true;
+                } else{
+                    /* Update projection in database */
+                    if(empty($errors)){
+                        $upadteProjection=$db->prepare('UPDATE projections SET movie_id=:movie_id,
+                                                                          datetime=:datetime,
+                                                                          language=:language,
+                                                                          subtittles=:subtittles,
+                                                                          dimensions=:dimensions,
+                                                                          capacity=:capacity,
+                                                                          hall=:hall
+                                                        WHERE projection_id=:projection_id LIMIT 1;');
+                        $upadteProjection->execute([
+                            ':projection_id'=>$_GET['projection_id'],
+                            ':movie_id'=>$movieId,
+                            ':datetime'=>$datetime->format('Y-m-d H:i:s'),
+                            ':language'=>$language,
+                            ':subtittles'=>$subtittles,
+                            ':dimensions'=>$dimensions,
+                            ':capacity'=>$capacity,
+                            ':hall'=>$hall
+                        ]);
 
-                    header('Location: '.$_SERVER['REQUEST_URI']);
-                    exit();
+                        header('Location: '.$_SERVER['REQUEST_URI']);
+                        exit();
+                    }
                 }
             }
         }
@@ -172,6 +190,10 @@
         <?php endif ?>
 
         <h2 class="pb-3"><?=$pageTitle?></h2>
+
+        <?php if(@$optimisticLock): ?>
+            <div class="alert alert-danger">The projection was updated by someone else in meantime!</div>
+        <?php endif ?>
 
         <form method="post">
 
@@ -295,10 +317,27 @@
 
             </div>
 
-            <hr>
+            <input type="hidden" name="last_updated_at" value="<?=htmlspecialchars(@$projection['last_updated_at'])?>">
+
             <button type="submit" class="btn btn-primary">Save</button>
             <a href="./program/today"    class="btn btn-light">Cancel</a>
         </form>
+
+        <!-- List of reservations-->
+        <hr>
+        <h3 class="mb-3">Reservations</h3>
+        <?php if(empty($reservations)): ?>
+            <div class="alert alert-info">There is no reservations for this projetion.</div>
+        <?php else: ?>
+            <ul class="list-group">
+            <?php foreach($reservations as $reservation): ?>
+            <li class="list-group-item">
+                <span class="badge badge-primary"><?=$reservation['quantity']?>x</span>
+                <?=$reservation['name']?>
+            </li>
+            <?php endforeach ?>
+            </ul>
+        <?php endif ?>
     </div>
 </main>
 <?php include './include/footer.php' ?>

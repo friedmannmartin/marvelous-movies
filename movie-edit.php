@@ -130,9 +130,23 @@
                 header("Location: ./edit/$lastInsertedMovie");
                 exit();
             } else {
-                /* Update movie in database */
-                if(empty($errors)){
-                    $upadteMovie=$db->prepare('UPDATE movies SET url=:url, name=:name, age_restriction=:age_restriction, year=:year, description=:description, length=:length, trailer=:trailer, poster=:poster WHERE movie_id=:movie_id LIMIT 1;');
+                /* Check whether was updated in meantime */
+                $optimisticLock = false;
+                if ($_POST['last_updated_at'] != $movie['last_updated_at']) {
+                    $optimisticLock = true;
+                } else{
+                    /* Update movie in database */
+                    $upadteMovie=$db->prepare('UPDATE movies SET url=:url,
+                                                                 name=:name,
+                                                                 age_restriction=:age_restriction,
+                                                                 year=:year,
+                                                                 description=:description,
+                                                                 length=:length,
+                                                                 trailer=:trailer,
+                                                                 poster=:poster,
+                                                                 last_updated_at=NOW()
+                                                    WHERE movie_id=:movie_id
+                                                    LIMIT 1;');
                     $upadteMovie->execute([
                         ':movie_id'=>$_GET['movie_id'],
                         ':url'=>$url,
@@ -172,6 +186,10 @@
         <?php endif ?>
 
         <h2 class="pb-3"><?=$pageTitle?></h2>
+
+        <?php if(@$optimisticLock): ?>
+            <div class="alert alert-danger">The movie was updated by someone else in meantime!</div>
+        <?php endif ?>
 
         <form method="post">
 
@@ -320,6 +338,8 @@
                         <div class="invalid-feedback"><?=$errors['description']?></div>
                     <?php endif ?>
                 </div>
+
+                <input type="hidden" name="last_updated_at" value="<?=htmlspecialchars(@$movie['last_updated_at'])?>">
 
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="./movies"    class="btn btn-light">Cancel</a>

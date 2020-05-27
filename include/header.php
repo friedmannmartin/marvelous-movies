@@ -7,7 +7,6 @@
     <base href="https://eso.vse.cz/~frim00/marvelous-movies/">
 
     <!-- CSS -->
-    <!--<link rel="stylesheet" href="./css/style.css">-->
     <style>main{ min-height: calc(100vh - 2*56px);}</style>
 
     <!-- Font Awesome 4 -->
